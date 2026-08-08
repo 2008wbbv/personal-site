@@ -9,12 +9,18 @@ no trackers, no external network requests at runtime.
 
 ```
 index.html      Home — about, education, research experience, publications,
-                projects, honors & awards, writing, contact
-cv.html         Curriculum vitae, print/PDF-ready
+                projects, honors & awards, adventures, writing, contact
+cv.html         Curriculum vitae, web version
+cv/cv.tex       Curriculum vitae, LaTeX source — one page
+cv/cv.pdf       Typeset output (pdflatex cv.tex)
 404.html        Not-found page
 css/style.css   All styles (design tokens → components → responsive → print)
 js/main.js      Theme, scrollspy, filters, copy-to-clipboard, command palette
+img/            Photographs — see img/README.md
 ```
+
+The CV exists twice on purpose: `cv.html` for reading in a browser, and a
+one-page LaTeX version for sending to people. Both carry the same content.
 
 Sections follow academic CV convention: education and research experience lead, publications
 sit with the research rather than after the skills list, and projects follow.
@@ -27,6 +33,9 @@ The layout borrows the **author-profile sidebar and academic section model** fro
 project cards** from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
 [bnvac.com](https://bnvac.com).
 
+- **Restraint** — no boxes where whitespace will do. Research interests and the
+  headline statistics are plain type on open ground; the hairline rules and the card
+  borders are the only chrome on the page. Nothing blinks or pulses.
 - **Type** — three roles, all from system stacks so there are no webfonts, no layout shift
   and no third-party requests: a **serif** (Georgia and friends) for scholarly display —
   names, headings, entry and paper titles; a **sans** for reading; a **mono** for dates,
@@ -50,6 +59,7 @@ still complete, readable, and every section is visible.
 | Scrollspy | `IntersectionObserver` marks the section you're reading in the sidebar nav. |
 | Experience filter | all / research / engineering / leadership. Hidden until JS loads. |
 | Sidebar | Sticks when it fits the viewport; below 940px tall it scrolls with the page so nothing is trapped behind a hidden scrollbar. |
+| Photos | Plain `<img>`, lazy-loaded, with width/height set so nothing reflows. The portrait falls back to a monogram when the file is absent. |
 | Copy email | Clipboard API with an `execCommand` fallback for non-secure contexts. |
 
 ## Accessibility
@@ -82,11 +92,20 @@ Static files, so any host works. For GitHub Pages, push and enable Pages on the 
 - **Palette entries** are the `commands` array near the bottom of `js/main.js`.
 - **Colors and spacing** are the custom properties in the `:root` block of `css/style.css`.
 
+## Building the CV
+
+```sh
+cd cv && pdflatex cv.tex
+```
+
+Plain LaTeX — `article`, Charter, and a handful of standard packages. No CV class.
+It is written to stay on one page; if you add entries and it spills onto a second,
+trim a bullet rather than shrinking the margins.
+
 ### Still to fill in
 
-- **Millis High School years** — the date cell is intentionally empty in both
-  `index.html` (`.entry__when`) and `cv.html` (`.row__when`). Each is marked with an HTML
-  comment; drop your start and graduation years in and it renders like every other row.
+- **Photographs** — everything in `img/` is a generated placeholder. See
+  `img/README.md` for what each slot expects.
 - **Publications** currently hold a single "To be published / in preparation" entry in
-  `index.html` and `cv.html`. Copy the marked `<li class="pub">` or `<div class="row">`
-  for each paper as it lands.
+  `index.html`, `cv.html` and `cv/cv.tex`. Copy the marked `<li class="pub">`,
+  `<div class="row">` or `\item` for each paper as it lands.

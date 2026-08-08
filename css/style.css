@@ -230,8 +230,24 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   }
 }
 
-.avatar { width: 58px; margin-bottom: 14px; }
-.avatar svg { width: 100%; height: auto; border-radius: var(--r-xl); }
+.avatar {
+  position: relative;
+  width: 60px;
+  aspect-ratio: 1;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-hover);
+}
+.avatar > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Pulled toward the upper third, where the face sits in a full-length shot. */
+.avatar__img { object-fit: cover; object-position: 50% 20%; z-index: 1; }
+.avatar__fallback { z-index: 0; }
 .av-a { stop-color: #27272a; }
 .av-b { stop-color: #09090b; }
 :root[data-theme="dark"] .av-a { stop-color: #3f3f46; }
@@ -257,21 +273,11 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 }
 
 .profile__handle {
-  display: flex;
-  align-items: center;
-  gap: 1px;
   margin-top: 2px;
   font-family: var(--mono);
   font-size: 13px;
   color: var(--ink-faint);
 }
-.caret {
-  width: 7px;
-  height: 14px;
-  background: var(--accent);
-  animation: blink 1.15s steps(2, start) infinite;
-}
-@keyframes blink { 50% { opacity: 0; } }
 
 .profile__role {
   margin-top: 12px;
@@ -333,7 +339,9 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 .btn:hover { border-color: var(--line-strong); background: var(--bg-hover); }
 .btn:active { transform: translateY(1px); }
 
-.btn--cv { width: 100%; margin-top: 14px; }
+.cvpair { display: flex; gap: 6px; margin-top: 14px; }
+.btn--cv { flex: 1; }
+.btn--pdf { flex: none; font-family: var(--mono); font-size: 12px; }
 
 .btn--primary {
   background: var(--ink);
@@ -524,12 +532,12 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 }
 
 .hero__sub {
-  margin-top: 20px;
-  max-width: 62ch;
-  font-size: 14px;
-  line-height: 1.7;
+  margin-top: 16px;
+  font-size: 15.5px;
+  line-height: 1.6;
   color: var(--ink-faint);
-  font-family: var(--mono);
+  max-width: 58ch;
+  letter-spacing: -.005em;
 }
 
 .prose {
@@ -547,63 +555,79 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1px;
-  margin-top: 36px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--line);
-  overflow: hidden;
+  gap: 22px 36px;
+  margin-top: 40px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
 }
-.stat { padding: 16px 18px; background: var(--bg); }
 .stat dt {
-  font-size: 11.5px;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  color: var(--ink-ghost);
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  letter-spacing: -.005em;
 }
 .stat dd {
-  margin-top: 5px;
-  font-size: 19px;
-  font-weight: 640;
-  letter-spacing: -.02em;
+  margin: 3px 0 0;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -.03em;
+  line-height: 1.15;
 }
 .stat dd span {
+  display: block;
+  margin-top: 1px;
   font-size: 12.5px;
-  font-weight: 450;
-  color: var(--ink-faint);
+  font-weight: 400;
   letter-spacing: 0;
+  color: var(--ink-faint);
 }
 
 /* --------------------------- Research interests --------------------------- */
 
 .interests {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1px;
-  margin-top: 34px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--line);
-  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  gap: 26px 44px;
+  margin-top: 26px;
 }
-.interest { padding: 17px 18px; background: var(--bg); }
-.interest__n {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-}
-.interest__h {
-  margin-top: 7px;
+.interest dt {
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 16.5px;
   font-weight: 600;
   letter-spacing: -.01em;
 }
-.interest__p {
-  margin-top: 5px;
-  font-size: 13.5px;
+.interest dd {
+  margin: 4px 0 0;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ink-soft);
+  max-width: 42ch;
+}
+
+/* -------------------------------- Adventures ------------------------------ */
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+.shot { position: relative; margin: 0; }
+.shot img {
+  width: 100%;
+  /* height:auto is required — the width/height attributes act as a presentational
+     hint that otherwise beats aspect-ratio and renders the image at full size. */
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  background: var(--bg-hover);
+  transition: transform .4s var(--ease);
+}
+.shot:hover img { transform: scale(1.02); }
+.shot figcaption {
+  margin-top: 7px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
 }
 
 /* -------------------------------- Timeline -------------------------------- */
@@ -632,7 +656,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   display: grid;
   grid-template-columns: 128px minmax(0, 1fr);
   gap: 24px;
-  padding: 22px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--line);
   animation: rise .32s var(--ease) both;
 }
@@ -647,21 +671,17 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 }
 
 .entry__when {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  display: block;
   padding-top: 3px;
   font-family: var(--mono);
-  font-size: 12.5px;
-  color: var(--ink-faint);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+  color: var(--ink-ghost);
   white-space: nowrap;
 }
-.entry__dash {
-  flex: 1;
-  min-width: 8px;
-  height: 1px;
-  background: var(--line-strong);
-}
+/* One clean en dash between the two years — no drawn rule, no arrow. */
+.entry__when time ~ time::before { content: "–"; margin: 0 .35em; }
 
 .entry__title {
   font-family: var(--serif);
@@ -687,7 +707,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 }
 
 .entry__what {
-  margin-top: 4px;
+  margin-top: 3px;
   font-size: 14.5px;
   line-height: 1.6;
   color: var(--ink-soft);
@@ -697,7 +717,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .tags li {
   padding: 2px 9px;
@@ -731,15 +751,29 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 .card {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-xl);
   background: var(--bg-raised);
-  transition: border-color .18s, transform .18s var(--ease), box-shadow .18s;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease),
+              border-color .3s var(--ease);
 }
+.card__media {
+  aspect-ratio: 16 / 10;
+  background: var(--bg-hover);
+  overflow: hidden;
+}
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s var(--ease);
+}
+.card:hover .card__media img { transform: scale(1.03); }
+.card__body { padding: 16px 18px 18px; }
 .card:hover {
+  transform: translateY(-3px);
   border-color: var(--line-strong);
-  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
@@ -1008,11 +1042,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 
   .entry { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .entry__when { padding-top: 0; }
-  .entry__dash { display: none; }
-  /* The dash element sits between the two <time>s, so this needs ~, not +. */
-  .entry__when time ~ time::before { content: "→ "; }
-}
-
+  
 @media (max-width: 560px) {
   .hero__title { max-width: none; }
   .cards { grid-template-columns: minmax(0, 1fr); }

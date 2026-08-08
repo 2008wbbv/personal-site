@@ -89,8 +89,13 @@
   <header class="profile" id="profile">
     <div class="profile__inner">
 
-      <div class="avatar" aria-hidden="true">
-        <svg viewBox="0 0 96 96" role="img">
+      <div class="avatar">
+        <!-- Drop your photo at img/headshot.jpg. It is cropped square and pulled
+             toward the upper third, where a face sits in most full-body shots.
+             If the file is missing the monogram below shows instead. -->
+        <img class="avatar__img" src="img/headshot.jpg" alt="Ben Vaccaro"
+             width="96" height="96" onerror="this.remove()">
+        <svg class="avatar__fallback" viewBox="0 0 96 96" aria-hidden="true">
           <defs>
             <linearGradient id="av" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" class="av-a"/><stop offset="1" class="av-b"/>
@@ -102,7 +107,7 @@
       </div>
 
       <h1 class="profile__name">Ben Vaccaro</h1>
-      <p class="profile__handle"><span>bnvac</span><i class="caret" aria-hidden="true"></i></p>
+      <p class="profile__handle">bnvac</p>
       <p class="profile__role">Radar sensing, machine learning systems,
         and neural interfaces.</p>
 
@@ -118,9 +123,12 @@
         <li><a href="https://instagram.com/bnvac" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram</span></a></li>
       </ul>
 
-      <a class="btn btn--cv" href="cv.html">
-        <svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>View CV
-      </a>
+      <div class="cvpair">
+        <a class="btn btn--cv" href="cv.html">
+          <svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>View CV
+        </a>
+        <a class="btn btn--pdf" href="cv/cv.pdf" title="One-page typeset PDF">PDF</a>
+      </div>
 
       <div class="profile__tools">
         <button type="button" class="tool" id="palette-open" aria-haspopup="dialog">
@@ -156,9 +164,9 @@
   <!-- ============================== Main ============================== -->
   <main class="main" id="main">
 
-    <!-- ---------------------------- About ---------------------------- -->
+    <!-- ------------------------------ About ------------------------------ -->
     <section class="sec sec--hero" id="about" aria-labelledby="h-about">
-      <p class="eyebrow">Boston, MA · <span class="live"><i aria-hidden="true"></i>open to research collaborations</span></p>
+      <p class="eyebrow">Boston, MA · Open to research collaborations</p>
 
       <h2 class="hero__title" id="h-about">
         Research across <em>radar sensing</em>, <em>machine&nbsp;learning systems</em>,
@@ -188,28 +196,24 @@
       </div>
 
       <h3 class="sub">Research interests</h3>
-      <div class="interests">
+      <dl class="interests">
         <div class="interest">
-          <p class="interest__n">01</p>
-          <h4 class="interest__h">Radar &amp; remote sensing</h4>
-          <p class="interest__p">Synthetic-aperture radar, unmanned aerial platforms, signal processing.</p>
+          <dt>Radar &amp; remote sensing</dt>
+          <dd>Synthetic-aperture radar, unmanned aerial platforms, signal processing.</dd>
         </div>
         <div class="interest">
-          <p class="interest__n">02</p>
-          <h4 class="interest__h">Machine learning systems</h4>
-          <p class="interest__p">Training-data pipelines and the engineering around AI systems.</p>
+          <dt>Machine learning systems</dt>
+          <dd>Training-data pipelines and the engineering around AI systems.</dd>
         </div>
         <div class="interest">
-          <p class="interest__n">03</p>
-          <h4 class="interest__h">Neural interfaces</h4>
-          <p class="interest__p">Wireless brain–computer interface hardware and its bring-up.</p>
+          <dt>Neural interfaces</dt>
+          <dd>Wireless brain–computer interface hardware and its bring-up.</dd>
         </div>
         <div class="interest">
-          <p class="interest__n">04</p>
-          <h4 class="interest__h">Research infrastructure</h4>
-          <p class="interest__p">Tooling that carries scholarly work from draft to publication.</p>
+          <dt>Research infrastructure</dt>
+          <dd>Tooling that carries scholarly work from draft to publication.</dd>
         </div>
-      </div>
+      </dl>
 
       <dl class="stats">
         <div class="stat"><dt>MIT BWSI UAS-SAR</dt><dd>1 of 21 <span>from 400+</span></dd></div>
@@ -219,8 +223,8 @@
       </dl>
     </section>
 
-    <!-- ---------------------------- Contact ---------------------------- -->
 
+    <!-- ---------------------------- Education ---------------------------- -->
     <section class="sec" id="education" aria-labelledby="h-edu">
       <div class="sec__head">
         <h2 class="sec__title" id="h-edu">Education</h2>
@@ -240,7 +244,7 @@
         </li>
 
         <li class="entry">
-          <div class="entry__when"><time datetime="2023-08">'23</time><span class="entry__dash" aria-hidden="true"></span><time datetime="2027-08">'27</time></div>
+          <div class="entry__when"><time datetime="2023-08">'23</time><time datetime="2027-08">'27</time></div>
           <div class="entry__body">
             <h3 class="entry__title">Millis High School</h3>
             <p class="entry__what">
@@ -264,6 +268,7 @@
 
       </ol>
     </section>
+    <!-- ---------------------- Research & Experience ---------------------- -->
     <section class="sec" id="experience" aria-labelledby="h-exp">
       <div class="sec__head">
         <h2 class="sec__title" id="h-exp">Research Experience</h2>
@@ -278,7 +283,7 @@
       <ol class="timeline" id="exp-list">
 
         <li class="entry" data-cat="research">
-          <div class="entry__when"><time>jul '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__when"><time>jul '26</time><time>now</time></div>
           <div class="entry__body">
             <h3 class="entry__title">MIT Lincoln Laboratory <span class="sep">·</span> BWSI</h3>
             <p class="entry__what">UAS-SAR — synthetic-aperture radar on drones.</p>
@@ -289,7 +294,7 @@
         </li>
 
         <li class="entry" data-cat="engineering">
-          <div class="entry__when"><time>jun '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__when"><time>jun '26</time><time>now</time></div>
           <div class="entry__body">
             <h3 class="entry__title">Solderable</h3>
             <p class="entry__what">Wireless BCI platform, currently at Rev&nbsp;A.</p>
@@ -300,7 +305,7 @@
         </li>
 
         <li class="entry" data-cat="research">
-          <div class="entry__when"><time>jun '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__when"><time>jun '26</time><time>now</time></div>
           <div class="entry__body">
             <h3 class="entry__title">Mantis AI <span class="sep">·</span> MIT CSAIL</h3>
             <p class="entry__what">Training-data pipelines for an AI systems engineer.</p>
@@ -311,7 +316,7 @@
         </li>
 
         <li class="entry" data-cat="engineering">
-          <div class="entry__when"><time>may '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__when"><time>may '26</time><time>now</time></div>
           <div class="entry__body">
             <h3 class="entry__title">Synthica</h3>
             <p class="entry__what">Research-publication infrastructure.</p>
@@ -322,7 +327,7 @@
         </li>
 
         <li class="entry" data-cat="leadership">
-          <div class="entry__when"><time>'24</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__when"><time>'24</time><time>now</time></div>
           <div class="entry__body">
             <h3 class="entry__title">SeaPerch Robotics <span class="sep">·</span> team captain</h3>
             <p class="entry__what">Underwater ROV design and competition.</p>
@@ -333,7 +338,7 @@
         </li>
 
         <li class="entry" data-cat="leadership">
-          <div class="entry__when"><time>'25</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__when"><time>'25</time><time>now</time></div>
           <div class="entry__body">
             <h3 class="entry__title">Hack Club × NASA</h3>
             <p class="entry__what">Stardance ambassador and hackathon organizer.</p>
@@ -346,7 +351,7 @@
       </ol>
       <p class="empty" id="exp-empty" hidden>No roles in that category.</p>
     </section>
-    <!-- -------------------------- Publications -------------------------- -->
+    <!-- --------------------------- Publications --------------------------- -->
     <section class="sec" id="publications" aria-labelledby="h-pubs">
       <div class="sec__head">
         <h2 class="sec__title" id="h-pubs">Publications</h2>
@@ -359,6 +364,7 @@
         </li>
       </ol>
     </section>
+    <!-- ----------------------------- Projects ----------------------------- -->
     <section class="sec" id="work" aria-labelledby="h-work">
       <div class="sec__head">
         <h2 class="sec__title" id="h-work">Projects</h2>
@@ -367,79 +373,92 @@
       <div class="cards">
 
         <article class="card">
-          <div class="card__top">
-            <h3 class="card__title">UAS-SAR</h3>
-            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          <div class="card__media">
+            <img src="img/projects/uas-sar.jpg" alt="" loading="lazy" width="1200" height="750">
           </div>
-          <p class="card__desc">
-            Synthetic-aperture radar carried on unmanned aircraft — the summer research track at MIT
-            Lincoln Laboratory's Beaver Works Summer Institute, selected as 1 of 21 from a 400+ applicant pool.
-          </p>
-          <ul class="tags"><li>Radar</li><li>SAR</li><li>MIT LL</li></ul>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">UAS-SAR</h3>
+              <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+            </div>
+            <p class="card__desc">Synthetic-aperture radar flown on unmanned aircraft.</p>
+            <ul class="tags"><li>Radar</li><li>SAR</li><li>MIT LL</li></ul>
+          </div>
         </article>
 
         <article class="card">
-          <div class="card__top">
-            <h3 class="card__title">Solderable BCI</h3>
-            <span class="badge badge--build"><i aria-hidden="true"></i>Building</span>
+          <div class="card__media">
+            <img src="img/projects/solderable.jpg" alt="" loading="lazy" width="1200" height="750">
           </div>
-          <p class="card__desc">
-            A wireless brain–computer interface platform, funded by a Rev&nbsp;A hardware grant and
-            currently working through its first revision.
-          </p>
-          <ul class="tags"><li>Wireless BCI</li><li>Hardware</li><li>Rev A</li></ul>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Solderable BCI</h3>
+              <span class="badge badge--build"><i aria-hidden="true"></i>Building</span>
+            </div>
+            <p class="card__desc">A wireless brain–computer interface platform, at Rev A.</p>
+            <ul class="tags"><li>Wireless BCI</li><li>Hardware</li></ul>
+          </div>
         </article>
 
         <article class="card">
-          <div class="card__top">
-            <h3 class="card__title">Mantis AI data pipelines</h3>
-            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          <div class="card__media">
+            <img src="img/projects/mantis.jpg" alt="" loading="lazy" width="1200" height="750">
           </div>
-          <p class="card__desc">
-            Training-data pipelines feeding an AI systems engineer, built with the Mantis AI group
-            at MIT CSAIL.
-          </p>
-          <ul class="tags"><li>AI research</li><li>Data pipelines</li><li>MIT CSAIL</li></ul>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Mantis AI pipelines</h3>
+              <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+            </div>
+            <p class="card__desc">Training-data pipelines for AI systems engineering.</p>
+            <ul class="tags"><li>AI research</li><li>MIT CSAIL</li></ul>
+          </div>
         </article>
 
         <article class="card">
-          <div class="card__top">
-            <h3 class="card__title">Synthica publishing infra</h3>
-            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          <div class="card__media">
+            <img src="img/projects/synthica.jpg" alt="" loading="lazy" width="1200" height="750">
           </div>
-          <p class="card__desc">
-            Infrastructure for research publication — the software and deployment layer that gets
-            work from draft to reader.
-          </p>
-          <ul class="tags"><li>SWE</li><li>DevOps</li></ul>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">Synthica publishing</h3>
+              <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+            </div>
+            <p class="card__desc">Infrastructure carrying research from draft to reader.</p>
+            <ul class="tags"><li>SWE</li><li>DevOps</li></ul>
+          </div>
         </article>
 
         <article class="card">
-          <div class="card__top">
-            <h3 class="card__title">MIT Blueprint prototype</h3>
-            <span class="badge badge--done"><i aria-hidden="true"></i>Shipped</span>
+          <div class="card__media">
+            <img src="img/projects/blueprint.jpg" alt="" loading="lazy" width="1200" height="750">
           </div>
-          <p class="card__desc">
-            First place overall at MIT Blueprint — a working prototype designed, built and demoed
-            inside a ten-hour window.
-          </p>
-          <ul class="tags"><li>Hackathon</li><li class="tags__hi">1st overall</li></ul>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">MIT Blueprint</h3>
+              <span class="badge badge--done"><i aria-hidden="true"></i>Shipped</span>
+            </div>
+            <p class="card__desc">A working prototype designed and demoed in ten hours.</p>
+            <ul class="tags"><li>Hackathon</li><li>1st overall</li></ul>
+          </div>
         </article>
 
         <article class="card">
-          <div class="card__top">
-            <h3 class="card__title">SeaPerch ROV</h3>
-            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          <div class="card__media">
+            <img src="img/projects/seaperch.jpg" alt="" loading="lazy" width="1200" height="750">
           </div>
-          <p class="card__desc">
-            Captaining an underwater remotely-operated vehicle team that placed in the national
-            top 50 in its first year competing.
-          </p>
-          <ul class="tags"><li>Robotics</li><li>ROV</li><li>Team lead</li></ul>
+          <div class="card__body">
+            <div class="card__top">
+              <h3 class="card__title">SeaPerch ROV</h3>
+              <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+            </div>
+            <p class="card__desc">A remotely-operated underwater vehicle, built to compete.</p>
+            <ul class="tags"><li>Robotics</li><li>ROV</li></ul>
+          </div>
         </article>
 
       </div>
     </section>
+    <!-- ------------------------- Honors & Awards ------------------------- -->
     <section class="sec" id="awards" aria-labelledby="h-awards">
       <div class="sec__head">
         <h2 class="sec__title" id="h-awards">Honors &amp; Awards</h2>
@@ -480,7 +499,7 @@
         </li>
 
         <li class="entry">
-          <div class="entry__when"><time>'25</time><span class="entry__dash" aria-hidden="true"></span><time>'26</time></div>
+          <div class="entry__when"><time>'25</time><time>'26</time></div>
           <div class="entry__body">
             <h3 class="entry__title">Community Foundation for MetroWest</h3>
             <p class="entry__what">YIP grant lead — directed $10k to nonprofits.</p>
@@ -489,6 +508,43 @@
 
       </ol>
     </section>
+    <!-- ---------------------------- Adventures ---------------------------- -->
+    <section class="sec" id="adventures" aria-labelledby="h-adv">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-adv">Adventures</h2>
+      </div>
+
+      <!-- Swap these files in img/adventures/ for your own photographs.
+           Square-ish crops sit best in this grid. -->
+      <div class="shots">
+        <figure class="shot">
+          <img src="img/adventures/01.jpg" alt="Inside a data center aisle" loading="lazy" width="1100" height="1100">
+          <figcaption>Data center</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/adventures/02.jpg" alt="" loading="lazy" width="1100" height="1100">
+          <figcaption>Lab bench</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/adventures/03.jpg" alt="" loading="lazy" width="1100" height="1100">
+          <figcaption>Field testing</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/adventures/04.jpg" alt="" loading="lazy" width="1100" height="1100">
+          <figcaption>Hackathon</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/adventures/05.jpg" alt="" loading="lazy" width="1100" height="1100">
+          <figcaption>On the water</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="img/adventures/06.jpg" alt="" loading="lazy" width="1100" height="1100">
+          <figcaption>Somewhere new</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ----------------------------- Writing ----------------------------- -->
     <section class="sec" id="writing" aria-labelledby="h-writing">
       <div class="sec__head">
         <h2 class="sec__title" id="h-writing">Writing</h2>
@@ -502,6 +558,7 @@
         <svg class="ico linkcard__go" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
     </section>
+    <!-- ----------------------------- Contact ----------------------------- -->
     <section class="sec" id="contact" aria-labelledby="h-contact">
       <div class="sec__head">
         <h2 class="sec__title" id="h-contact">Contact</h2>

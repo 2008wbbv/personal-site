@@ -1,0 +1,145 @@
+% =============================================================================
+%  Ben Vaccaro — curriculum vitae
+%  One page. Plain LaTeX, no CV class, no exotic packages.
+%  Build:  pdflatex cv.tex
+% =============================================================================
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.72in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+% Charter: a text face with the warmth of a book, still crisp at 10pt.
+\usepackage{charter}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{1.02}
+
+% Section rules sit close to their heading and carry the whole measure.
+\titleformat{\section}
+  {\normalfont\footnotesize\bfseries\scshape\raggedright}
+  {}{0pt}{}[\vspace{1pt}\hrule height 0.4pt]
+\titlespacing*{\section}{0pt}{7pt plus 2pt minus 1pt}{4pt}
+
+% An entry is a full-width row: title flush left, dates flush right.
+\newcommand{\entry}[2]{%
+  \vspace{2pt}%
+  \noindent\textbf{#1}\hfill{\footnotesize #2}\par
+}
+\newcommand{\where}[1]{{\footnotesize\itshape #1}\par\vspace{1pt}}
+
+\setlist[itemize]{
+  leftmargin=1.1em, topsep=1pt, itemsep=0.4pt, parsep=0pt,
+  label=\textendash
+}
+
+% =============================================================================
+
+\begin{document}
+
+% ------------------------------- Masthead -----------------------------------
+{\LARGE\bfseries Ben Vaccaro}\hfill{\footnotesize Boston, MA}
+
+\vspace{2pt}
+{\footnotesize
+Radar sensing $\cdot$ machine learning systems $\cdot$ neural interfaces
+\hfill
+\href{mailto:benvaccaro@proton.me}{benvaccaro@proton.me} $\cdot$
+\href{https://bnvac.com}{bnvac.com} $\cdot$
+\href{https://github.com/2008wbbv}{github.com/2008wbbv}
+}
+
+\vspace{4pt}\hrule height 0.8pt
+
+% ------------------------------- Education ----------------------------------
+\section{Education}
+
+\entry{MIT Beaver Works Summer Institute --- UAS-SAR}{Summer 2026}
+\where{MIT Lincoln Laboratory}
+\begin{itemize}
+  \item Synthetic-aperture radar on unmanned aircraft. Admitted as 1 of 21 from 400+ applicants.
+\end{itemize}
+
+\entry{Millis High School}{2023--2027}
+\where{Millis, MA \textperiodcentered\ Class of 2027 \textperiodcentered\ 95/100}
+\begin{itemize}
+  \item AP Physics C (Mechanics, E\&M), Calculus AB, Statistics, Biology,
+        Computer Science Principles, Literature, Language, Spanish, US History.
+  \item Dual enrollment in engineering, University of Texas at Austin.
+  \item VP Student Council (9--10, 12); National Honor Society (11--12);
+        Peer Leadership Club, Student IT Volunteer (9--12).
+\end{itemize}
+
+% --------------------------- Research \& experience --------------------------
+\section{Research \& Experience}
+
+\entry{Research Assistant --- UAS-SAR}{2026--}
+\where{MIT Lincoln Laboratory, Beaver Works}
+\begin{itemize}
+  \item Synthetic-aperture radar carried on drones: signal processing and flight-side capture.
+\end{itemize}
+
+\entry{Founder, Rev A}{2026--}
+\where{Solderable}
+\begin{itemize}
+  \item Wireless brain--computer interface platform, funded by a Rev A hardware grant.
+\end{itemize}
+
+\entry{AI Research}{2026--}
+\where{Mantis AI, MIT CSAIL}
+\begin{itemize}
+  \item Training-data pipelines for AI systems engineering.
+\end{itemize}
+
+\entry{Software Engineer}{2026--}
+\where{Synthica}
+\begin{itemize}
+  \item Research-publication infrastructure: the software and deployment layer
+        carrying scholarly work from draft to reader.
+\end{itemize}
+
+\entry{Team Captain}{2024--}
+\where{SeaPerch Underwater Robotics}
+\begin{itemize}
+  \item Underwater ROV design and competition; top 50 nationally in the team's first year.
+\end{itemize}
+
+\entry{Stardance Ambassador}{2025--}
+\where{Hack Club $\times$ NASA}
+\begin{itemize}
+  \item Hackathon organizing and community outreach.
+\end{itemize}
+
+% ------------------------------ Publications --------------------------------
+\section{Publications}
+\begin{itemize}
+  \item First paper in preparation --- details to follow.
+\end{itemize}
+
+% -------------------------------- Honors ------------------------------------
+\section{Honors \& Awards}
+\begin{itemize}
+  \item \textbf{1st overall}, MIT Blueprint --- winning prototype built in ten hours (2026).
+  \item \textbf{4th overall}, Special Competitive Studies Project at Harvard (2026).
+  \item \textbf{Xerox Innovation and Technology Award} (2026).
+  \item \textbf{MIT LLRISE} --- accepted, declined for BWSI (2026).
+  \item \textbf{\$10k directed to local nonprofits} as YIP grant lead,
+        Community Foundation for MetroWest (2025--2026).
+\end{itemize}
+
+% -------------------------------- Skills ------------------------------------
+\section{Technical}
+{\footnotesize
+\begin{tabular}{@{}>{\bfseries}p{0.15\textwidth}p{0.81\textwidth}@{}}
+Signals   & Synthetic-aperture radar, remote sensing, DSP \\
+Hardware  & PCB design and bring-up, embedded firmware, wireless BCI \\
+Software  & Python, C/C++, JavaScript, Git, Linux, CI/CD \\
+ML        & Training-data pipelines, AI systems engineering \\
+\end{tabular}}
+
+\end{document}

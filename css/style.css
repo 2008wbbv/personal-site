@@ -1009,7 +1009,8 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .entry__when { padding-top: 0; }
   .entry__dash { display: none; }
-  .entry__when time + time::before { content: "→ "; }
+  /* The dash element sits between the two <time>s, so this needs ~, not +. */
+  .entry__when time ~ time::before { content: "→ "; }
 }
 
 @media (max-width: 560px) {

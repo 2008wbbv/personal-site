@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Ben Vaccaro — wireless BCI &amp; radar systems</title>
+<meta name="description" content="Ben Vaccaro (bnvac) — Boston, MA. Building wireless brain–computer interfaces and radar systems. MIT Beaver Works Summer Institute, Solderable, Mantis AI at MIT CSAIL, Synthica.">
+<meta name="author" content="Ben Vaccaro">
+<link rel="canonical" href="https://bnvac.com/">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="bnvac">
+<meta property="og:title" content="Ben Vaccaro — wireless BCI &amp; radar systems">
+<meta property="og:description" content="Boston, MA. Building wireless brain–computer interfaces and radar systems. MIT BWSI · Solderable · Mantis AI · Synthica.">
+<meta property="og:url" content="https://bnvac.com/">
+<meta property="profile:first_name" content="Ben">
+<meta property="profile:last_name" content="Vaccaro">
+<meta property="profile:username" content="bnvac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ben Vaccaro — wireless BCI &amp; radar systems">
+<meta name="twitter:description" content="Boston, MA. Building wireless brain–computer interfaces and radar systems.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='15' font-weight='700' fill='%23fafafa' text-anchor='middle'%3Ebv%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23fafafa' text-anchor='middle'%3Ebv%3C/text%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="me" href="https://github.com/2008wbbv">
+
+<script>
+/* Set theme before first paint to avoid a flash of the wrong colors. */
+(function () {
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ben Vaccaro",
+  "alternateName": "bnvac",
+  "url": "https://bnvac.com/",
+  "email": "mailto:benvaccaro@proton.me",
+  "jobTitle": "Researcher and engineer",
+  "description": "Building wireless brain–computer interfaces and radar systems.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Boston", "addressRegion": "MA", "addressCountry": "US" },
+  "sameAs": [
+    "https://github.com/2008wbbv",
+    "https://www.linkedin.com/in/bnvac",
+    "https://bnvac.substack.com",
+    "https://instagram.com/bnvac"
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Icon sprite: one inline SVG, referenced by <use> — no icon font, no extra requests. -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.83v1.57h.05a4.2 4.2 0 0 1 3.78-2.07c4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5Z"/></symbol>
+  <symbol id="i-substack" viewBox="0 0 24 24"><path d="M4 3h16v2.6H4V3Zm0 4.3h16V10H4V7.3ZM4 11.6 12 16l8-4.4V21l-8-4.4L4 21v-9.4Z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+</svg>
+
+<div class="shell">
+
+  <!-- ============ Author profile sidebar (academicpages pattern) ============ -->
+  <header class="profile" id="profile">
+    <div class="profile__inner">
+
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 96 96" role="img">
+          <defs>
+            <linearGradient id="av" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" class="av-a"/><stop offset="1" class="av-b"/>
+            </linearGradient>
+          </defs>
+          <rect width="96" height="96" rx="24" fill="url(#av)"/>
+          <text x="48" y="61" text-anchor="middle" class="avatar__mono">bv</text>
+        </svg>
+      </div>
+
+      <h1 class="profile__name">Ben Vaccaro</h1>
+      <p class="profile__handle"><span>bnvac</span><i class="caret" aria-hidden="true"></i></p>
+      <p class="profile__role">Building wireless BCI&nbsp;·&nbsp;radar systems</p>
+
+      <p class="profile__meta">
+        <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Boston, MA
+      </p>
+
+      <ul class="profile__links">
+        <li><a href="mailto:benvaccaro@proton.me"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a></li>
+        <li><a href="https://github.com/2008wbbv" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/bnvac" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+        <li><a href="https://bnvac.substack.com" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-substack"/></svg><span>Substack</span></a></li>
+        <li><a href="https://instagram.com/bnvac" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram</span></a></li>
+      </ul>
+
+      <a class="btn btn--cv" href="cv.html">
+        <svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>View CV
+      </a>
+
+      <nav class="sidenav" aria-label="Sections">
+        <a href="#about"><span class="sidenav__bar" aria-hidden="true"></span>About</a>
+        <a href="#experience"><span class="sidenav__bar" aria-hidden="true"></span>Experience</a>
+        <a href="#work"><span class="sidenav__bar" aria-hidden="true"></span>Research &amp; Projects</a>
+        <a href="#awards"><span class="sidenav__bar" aria-hidden="true"></span>Awards</a>
+        <a href="#writing"><span class="sidenav__bar" aria-hidden="true"></span>Writing</a>
+        <a href="#contact"><span class="sidenav__bar" aria-hidden="true"></span>Contact</a>
+      </nav>
+
+      <div class="profile__tools">
+        <button type="button" class="tool" id="palette-open" aria-haspopup="dialog">
+          <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+          <span>Search</span>
+          <kbd class="kbd" id="kbd-hint">⌘K</kbd>
+        </button>
+        <button type="button" class="tool tool--icon" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+          <svg class="ico ico--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="ico ico--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================== Main ============================== -->
+  <main class="main" id="main">
+
+    <!-- ---------------------------- About ---------------------------- -->
+    <section class="sec sec--hero" id="about" aria-labelledby="h-about">
+      <p class="eyebrow">Boston, MA · <span class="live"><i aria-hidden="true"></i>open to research collaborations</span></p>
+
+      <h2 class="hero__title" id="h-about">
+        I build <em>wireless brain–computer interfaces</em> and <em>radar systems</em>.
+      </h2>
+
+      <p class="hero__sub">
+        Incoming @ MIT&nbsp;BWSI · SWE @ Synthica · AI research @ MIT&nbsp;Mantis&nbsp;AI ·
+        Rev&nbsp;A @ Solderable · Hack&nbsp;Club&nbsp;×&nbsp;NASA ambassador
+      </p>
+
+      <div class="prose">
+        <p>
+          I work at the seam between neural interfaces and sensing. Right now that means synthetic-aperture
+          radar flown on unmanned aircraft at <strong>MIT Lincoln Laboratory's Beaver Works Summer Institute</strong>,
+          a wireless BCI platform at <strong>Solderable</strong>, training-data pipelines for an AI systems
+          engineer at <strong>Mantis AI (MIT CSAIL)</strong>, and research-publication infrastructure at
+          <strong>Synthica</strong>.
+        </p>
+        <p>
+          Away from the bench I captain a <strong>SeaPerch</strong> robotics team, organize hackathons as a
+          <strong>Hack Club × NASA</strong> Stardance ambassador, and led a youth grant program that moved
+          $10k to local nonprofits.
+        </p>
+      </div>
+
+      <dl class="stats">
+        <div class="stat"><dt>MIT BWSI UAS-SAR</dt><dd>1 of 21 <span>from 400+</span></dd></div>
+        <div class="stat"><dt>MIT Blueprint</dt><dd>1st <span>overall</span></dd></div>
+        <div class="stat"><dt>SCSP @ Harvard</dt><dd>4th <span>overall</span></dd></div>
+        <div class="stat"><dt>Nonprofit grants</dt><dd>$10k <span>YIP lead</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- -------------------------- Experience -------------------------- -->
+    <section class="sec" id="experience" aria-labelledby="h-exp">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-exp">Experience</h2>
+        <div class="filters" id="exp-filters" role="group" aria-label="Filter experience" hidden>
+          <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">all</button>
+          <button type="button" class="chip" data-filter="research" aria-pressed="false">research</button>
+          <button type="button" class="chip" data-filter="engineering" aria-pressed="false">engineering</button>
+          <button type="button" class="chip" data-filter="leadership" aria-pressed="false">leadership</button>
+        </div>
+      </div>
+
+      <ol class="timeline" id="exp-list">
+
+        <li class="entry" data-cat="research">
+          <div class="entry__when"><time>jul '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">MIT Lincoln Laboratory <span class="sep">·</span> BWSI</h3>
+            <p class="entry__what">UAS-SAR — synthetic-aperture radar on drones.</p>
+            <ul class="tags">
+              <li>Radar</li><li>UAS</li><li>Signal processing</li><li class="tags__hi">1 of 21 from 400+</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="entry" data-cat="engineering">
+          <div class="entry__when"><time>jun '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Solderable</h3>
+            <p class="entry__what">Wireless BCI platform, currently at Rev&nbsp;A.</p>
+            <ul class="tags">
+              <li>Wireless BCI</li><li>Hardware</li><li class="tags__hi">Rev A grant</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="entry" data-cat="research">
+          <div class="entry__when"><time>jun '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Mantis AI <span class="sep">·</span> MIT CSAIL</h3>
+            <p class="entry__what">Training-data pipelines for an AI systems engineer.</p>
+            <ul class="tags">
+              <li>AI research</li><li>Data pipelines</li><li>MIT CSAIL</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="entry" data-cat="engineering">
+          <div class="entry__when"><time>may '26</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Synthica</h3>
+            <p class="entry__what">Research-publication infrastructure.</p>
+            <ul class="tags">
+              <li>Software engineering</li><li>DevOps</li><li>Infrastructure</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="entry" data-cat="leadership">
+          <div class="entry__when"><time>'24</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">SeaPerch Robotics <span class="sep">·</span> team captain</h3>
+            <p class="entry__what">Underwater ROV design and competition.</p>
+            <ul class="tags">
+              <li>Robotics</li><li>Team lead</li><li class="tags__hi">Top 50 nationally, year one</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="entry" data-cat="leadership">
+          <div class="entry__when"><time>'25</time><span class="entry__dash" aria-hidden="true"></span><time>now</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Hack Club × NASA</h3>
+            <p class="entry__what">Stardance ambassador and hackathon organizer.</p>
+            <ul class="tags">
+              <li>Community</li><li>Events</li><li>Outreach</li>
+            </ul>
+          </div>
+        </li>
+
+      </ol>
+      <p class="empty" id="exp-empty" hidden>No roles in that category.</p>
+    </section>
+
+    <!-- ----------------------- Research & Projects ---------------------- -->
+    <section class="sec" id="work" aria-labelledby="h-work">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-work">Research &amp; Projects</h2>
+      </div>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="card__top">
+            <h3 class="card__title">UAS-SAR</h3>
+            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          </div>
+          <p class="card__desc">
+            Synthetic-aperture radar carried on unmanned aircraft — the summer research track at MIT
+            Lincoln Laboratory's Beaver Works Summer Institute, selected as 1 of 21 from a 400+ applicant pool.
+          </p>
+          <ul class="tags"><li>Radar</li><li>SAR</li><li>MIT LL</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="card__top">
+            <h3 class="card__title">Solderable BCI</h3>
+            <span class="badge badge--build"><i aria-hidden="true"></i>Building</span>
+          </div>
+          <p class="card__desc">
+            A wireless brain–computer interface platform, funded by a Rev&nbsp;A hardware grant and
+            currently working through its first revision.
+          </p>
+          <ul class="tags"><li>Wireless BCI</li><li>Hardware</li><li>Rev A</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="card__top">
+            <h3 class="card__title">Mantis AI data pipelines</h3>
+            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          </div>
+          <p class="card__desc">
+            Training-data pipelines feeding an AI systems engineer, built with the Mantis AI group
+            at MIT CSAIL.
+          </p>
+          <ul class="tags"><li>AI research</li><li>Data pipelines</li><li>MIT CSAIL</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="card__top">
+            <h3 class="card__title">Synthica publishing infra</h3>
+            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          </div>
+          <p class="card__desc">
+            Infrastructure for research publication — the software and deployment layer that gets
+            work from draft to reader.
+          </p>
+          <ul class="tags"><li>SWE</li><li>DevOps</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="card__top">
+            <h3 class="card__title">MIT Blueprint prototype</h3>
+            <span class="badge badge--done"><i aria-hidden="true"></i>Shipped</span>
+          </div>
+          <p class="card__desc">
+            First place overall at MIT Blueprint — a working prototype designed, built and demoed
+            inside a ten-hour window.
+          </p>
+          <ul class="tags"><li>Hackathon</li><li class="tags__hi">1st overall</li></ul>
+        </article>
+
+        <article class="card">
+          <div class="card__top">
+            <h3 class="card__title">SeaPerch ROV</h3>
+            <span class="badge badge--live"><i aria-hidden="true"></i>Active</span>
+          </div>
+          <p class="card__desc">
+            Captaining an underwater remotely-operated vehicle team that placed in the national
+            top 50 in its first year competing.
+          </p>
+          <ul class="tags"><li>Robotics</li><li>ROV</li><li>Team lead</li></ul>
+        </article>
+
+      </div>
+
+      <!--
+        PUBLICATIONS (academicpages-style) — uncomment and fill in when you have entries.
+
+        <h3 class="sub">Publications</h3>
+        <ol class="pubs">
+          <li class="pub">
+            <p class="pub__title"><a href="URL">Paper title</a></p>
+            <p class="pub__meta">Author, Author. <em>Venue</em>, Year.</p>
+          </li>
+        </ol>
+      -->
+    </section>
+
+    <!-- ---------------------------- Awards ---------------------------- -->
+    <section class="sec" id="awards" aria-labelledby="h-awards">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-awards">Awards &amp; Honors</h2>
+      </div>
+
+      <ol class="timeline timeline--tight">
+
+        <li class="entry">
+          <div class="entry__when"><time>feb '26</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">MIT Blueprint <span class="rank">1st overall</span></h3>
+            <p class="entry__what">Built a winning prototype in ten hours.</p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry__when"><time>spring '26</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">SCSP @ Harvard <span class="rank">4th overall</span></h3>
+            <p class="entry__what">Recognized among the event's top projects.</p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry__when"><time>jun '26</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Xerox Award</h3>
+            <p class="entry__what">Innovation and information technology.</p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry__when"><time>'26</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">MIT LLRISE</h3>
+            <p class="entry__what">Accepted — declined for BWSI.</p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div class="entry__when"><time>'25</time><span class="entry__dash" aria-hidden="true"></span><time>'26</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Community Foundation for MetroWest</h3>
+            <p class="entry__what">YIP grant lead — directed $10k to nonprofits.</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- ---------------------------- Writing ---------------------------- -->
+    <section class="sec" id="writing" aria-labelledby="h-writing">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-writing">Writing</h2>
+      </div>
+      <a class="linkcard" href="https://bnvac.substack.com" rel="noopener">
+        <span class="linkcard__ico"><svg class="ico" aria-hidden="true"><use href="#i-substack"/></svg></span>
+        <span class="linkcard__body">
+          <strong>bnvac.substack.com</strong>
+          <span>Notes on hardware, research and the things I'm building.</span>
+        </span>
+        <svg class="ico linkcard__go" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+    </section>
+
+    <!-- ---------------------------- Contact ---------------------------- -->
+    <section class="sec" id="contact" aria-labelledby="h-contact">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-contact">Contact</h2>
+      </div>
+
+      <p class="prose">
+        The fastest way to reach me is email. I'm happy to talk about neural interfaces, radar,
+        or anything you're building.
+      </p>
+
+      <div class="contact">
+        <a class="btn btn--primary" href="mailto:benvaccaro@proton.me">
+          <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>benvaccaro@proton.me
+        </a>
+        <button type="button" class="btn" id="copy-email" data-email="benvaccaro@proton.me">
+          <svg class="ico ico--copy" aria-hidden="true"><use href="#i-copy"/></svg>
+          <svg class="ico ico--check" aria-hidden="true"><use href="#i-check"/></svg>
+          <span class="copy-label">Copy</span>
+        </button>
+      </div>
+
+      <ul class="profile__links profile__links--row">
+        <li><a href="https://github.com/2008wbbv" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/bnvac" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+        <li><a href="https://bnvac.substack.com" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-substack"/></svg><span>Substack</span></a></li>
+        <li><a href="https://instagram.com/bnvac" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram</span></a></li>
+      </ul>
+    </section>
+
+    <footer class="foot">
+      <p>© <span id="year">2026</span> Ben Vaccaro</p>
+      <p class="foot__note">Hand-written HTML, CSS and JavaScript. No frameworks, no trackers.</p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- ======================== Command palette ======================== -->
+<div class="palette" id="palette" hidden>
+  <div class="palette__scrim" data-close></div>
+  <div class="palette__box" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette__field">
+      <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+      <input type="text" id="palette-input" placeholder="Jump to a section, open a link…"
+             autocomplete="off" autocorrect="off" spellcheck="false"
+             role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
+      <kbd class="kbd">esc</kbd>
+    </div>
+    <ul class="palette__list" id="palette-list" role="listbox" aria-label="Results"></ul>
+    <p class="palette__empty" id="palette-empty" hidden>Nothing matches that.</p>
+    <div class="palette__foot">
+      <span><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> navigate</span>
+      <span><kbd class="kbd">↵</kbd> select</span>
+      <span><kbd class="kbd">esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

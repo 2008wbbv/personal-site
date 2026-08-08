@@ -73,10 +73,11 @@ Static files, so any host works. For GitHub Pages, push and enable Pages on the 
 - **Palette entries** are the `commands` array near the bottom of `js/main.js`.
 - **Colors and spacing** are the custom properties in the `:root` block of `css/style.css`.
 
-### Placeholders left for you
+### Still to fill in
 
-Two blocks are commented out rather than filled with guesses:
-
-- **Education** in `cv.html` — no school or program details were available.
-- **Publications** in `index.html` and `cv.html` — the academicpages-style markup is ready;
-  uncomment when you have entries.
+- **Millis High School years** — the date cell is intentionally empty in both
+  `index.html` (`.entry__when`) and `cv.html` (`.row__when`). Each is marked with an HTML
+  comment; drop your start and graduation years in and it renders like every other row.
+- **Publications** currently hold a single "To be published / in preparation" entry in
+  `index.html` and `cv.html`. Copy the marked `<li class="pub">` or `<div class="row">`
+  for each paper as it lands.

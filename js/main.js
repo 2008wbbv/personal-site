@@ -178,6 +178,8 @@
     { label: "About",              hint: "section", icon: "#i-arrow",     run: function () { go("#about"); } },
     { label: "Experience",         hint: "section", icon: "#i-arrow",     run: function () { go("#experience"); } },
     { label: "Research & Projects",hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
+    { label: "Publications",       hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
+    { label: "Education",          hint: "section", icon: "#i-arrow",     run: function () { go("#education"); } },
     { label: "Awards & Honors",    hint: "section", icon: "#i-arrow",     run: function () { go("#awards"); } },
     { label: "Writing",            hint: "section", icon: "#i-arrow",     run: function () { go("#writing"); } },
     { label: "Contact",            hint: "section", icon: "#i-arrow",     run: function () { go("#contact"); } },

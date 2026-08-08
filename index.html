@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<title>Ben Vaccaro — wireless BCI &amp; radar systems</title>
-<meta name="description" content="Ben Vaccaro (bnvac) — Boston, MA. Building wireless brain–computer interfaces and radar systems. MIT Beaver Works Summer Institute, Solderable, Mantis AI at MIT CSAIL, Synthica.">
+<title>Ben Vaccaro — radar sensing, ML systems, neural interfaces</title>
+<meta name="description" content="Ben Vaccaro (bnvac) — Boston, MA. Research across radar sensing, machine learning systems, and neural interfaces. MIT Beaver Works Summer Institute, Mantis AI at MIT CSAIL, Synthica, Solderable.">
 <meta name="author" content="Ben Vaccaro">
 <link rel="canonical" href="https://bnvac.com/">
 
@@ -15,15 +15,15 @@
 
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="bnvac">
-<meta property="og:title" content="Ben Vaccaro — wireless BCI &amp; radar systems">
-<meta property="og:description" content="Boston, MA. Building wireless brain–computer interfaces and radar systems. MIT BWSI · Solderable · Mantis AI · Synthica.">
+<meta property="og:title" content="Ben Vaccaro — radar sensing, ML systems, neural interfaces">
+<meta property="og:description" content="Boston, MA. Research across radar sensing, machine learning systems, and neural interfaces. MIT BWSI · Mantis AI · Synthica · Solderable.">
 <meta property="og:url" content="https://bnvac.com/">
 <meta property="profile:first_name" content="Ben">
 <meta property="profile:last_name" content="Vaccaro">
 <meta property="profile:username" content="bnvac">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ben Vaccaro — wireless BCI &amp; radar systems">
-<meta name="twitter:description" content="Boston, MA. Building wireless brain–computer interfaces and radar systems.">
+<meta name="twitter:title" content="Ben Vaccaro — radar sensing, ML systems, neural interfaces">
+<meta name="twitter:description" content="Boston, MA. Research across radar sensing, machine learning systems, and neural interfaces.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='15' font-weight='700' fill='%23fafafa' text-anchor='middle'%3Ebv%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23fafafa' text-anchor='middle'%3Ebv%3C/text%3E%3C/svg%3E">
@@ -49,8 +49,9 @@
   "alternateName": "bnvac",
   "url": "https://bnvac.com/",
   "email": "mailto:benvaccaro@proton.me",
-  "jobTitle": "Researcher and engineer",
-  "description": "Building wireless brain–computer interfaces and radar systems.",
+  "jobTitle": "Researcher",
+  "description": "Research across radar sensing, machine learning systems, and neural interfaces.",
+  "knowsAbout": ["Synthetic-aperture radar", "Remote sensing", "Machine learning systems", "Brain\u2013computer interfaces", "Research infrastructure"],
   "address": { "@type": "PostalAddress", "addressLocality": "Boston", "addressRegion": "MA", "addressCountry": "US" },
   "sameAs": [
     "https://github.com/2008wbbv",
@@ -102,7 +103,8 @@
 
       <h1 class="profile__name">Ben Vaccaro</h1>
       <p class="profile__handle"><span>bnvac</span><i class="caret" aria-hidden="true"></i></p>
-      <p class="profile__role">Building wireless BCI&nbsp;·&nbsp;radar systems</p>
+      <p class="profile__role">Radar sensing, machine learning systems,
+        and neural interfaces.</p>
 
       <p class="profile__meta">
         <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Boston, MA
@@ -120,27 +122,33 @@
         <svg class="ico" aria-hidden="true"><use href="#i-doc"/></svg>View CV
       </a>
 
-      <nav class="sidenav" aria-label="Sections">
-        <a href="#about"><span class="sidenav__bar" aria-hidden="true"></span>About</a>
-        <a href="#experience"><span class="sidenav__bar" aria-hidden="true"></span>Experience</a>
-        <a href="#work"><span class="sidenav__bar" aria-hidden="true"></span>Research &amp; Projects</a>
-        <a href="#education"><span class="sidenav__bar" aria-hidden="true"></span>Education</a>
-        <a href="#awards"><span class="sidenav__bar" aria-hidden="true"></span>Awards</a>
-        <a href="#writing"><span class="sidenav__bar" aria-hidden="true"></span>Writing</a>
-        <a href="#contact"><span class="sidenav__bar" aria-hidden="true"></span>Contact</a>
-      </nav>
-
       <div class="profile__tools">
         <button type="button" class="tool" id="palette-open" aria-haspopup="dialog">
           <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
           <span>Search</span>
           <kbd class="kbd" id="kbd-hint">⌘K</kbd>
         </button>
-        <button type="button" class="tool tool--icon" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
-          <svg class="ico ico--sun" aria-hidden="true"><use href="#i-sun"/></svg>
-          <svg class="ico ico--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </div>
+
+      <div class="themeswitch" id="themeswitch" role="group" aria-label="Color theme">
+        <button type="button" data-theme-set="light" aria-pressed="false">
+          <svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg>Light
+        </button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">
+          <svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg>Dark
         </button>
       </div>
+
+      <nav class="sidenav" aria-label="Sections">
+        <a href="#about"><span class="sidenav__bar" aria-hidden="true"></span>About</a>
+        <a href="#education"><span class="sidenav__bar" aria-hidden="true"></span>Education</a>
+        <a href="#experience"><span class="sidenav__bar" aria-hidden="true"></span>Research Experience</a>
+        <a href="#publications"><span class="sidenav__bar" aria-hidden="true"></span>Publications</a>
+        <a href="#work"><span class="sidenav__bar" aria-hidden="true"></span>Projects</a>
+        <a href="#awards"><span class="sidenav__bar" aria-hidden="true"></span>Honors &amp; Awards</a>
+        <a href="#writing"><span class="sidenav__bar" aria-hidden="true"></span>Writing</a>
+        <a href="#contact"><span class="sidenav__bar" aria-hidden="true"></span>Contact</a>
+      </nav>
 
     </div>
   </header>
@@ -153,7 +161,8 @@
       <p class="eyebrow">Boston, MA · <span class="live"><i aria-hidden="true"></i>open to research collaborations</span></p>
 
       <h2 class="hero__title" id="h-about">
-        I build <em>wireless brain–computer interfaces</em> and <em>radar systems</em>.
+        Research across <em>radar sensing</em>, <em>machine&nbsp;learning systems</em>,
+        and <em>neural interfaces</em>.
       </h2>
 
       <p class="hero__sub">
@@ -163,17 +172,43 @@
 
       <div class="prose">
         <p>
-          I work at the seam between neural interfaces and sensing. Right now that means synthetic-aperture
-          radar flown on unmanned aircraft at <strong>MIT Lincoln Laboratory's Beaver Works Summer Institute</strong>,
-          a wireless BCI platform at <strong>Solderable</strong>, training-data pipelines for an AI systems
-          engineer at <strong>Mantis AI (MIT CSAIL)</strong>, and research-publication infrastructure at
-          <strong>Synthica</strong>.
+          I am a researcher and engineer in Boston working on sensing and machine learning
+          systems. At <strong>MIT Lincoln Laboratory's Beaver Works Summer Institute</strong> I
+          study synthetic-aperture radar carried on unmanned aircraft; at
+          <strong>Mantis AI (MIT CSAIL)</strong> I build training-data pipelines for AI systems
+          engineering; at <strong>Synthica</strong> I maintain research-publication
+          infrastructure; and at <strong>Solderable</strong> I develop a wireless
+          brain–computer interface platform under a Rev&nbsp;A hardware grant.
         </p>
         <p>
-          Away from the bench I captain a <strong>SeaPerch</strong> robotics team, organize hackathons as a
-          <strong>Hack Club × NASA</strong> Stardance ambassador, and led a youth grant program that moved
-          $10k to local nonprofits.
+          Alongside the research I captain a <strong>SeaPerch</strong> underwater robotics team,
+          organize hackathons as a <strong>Hack Club × NASA</strong> Stardance ambassador, and
+          led a youth grant program that directed $10k to local nonprofits.
         </p>
+      </div>
+
+      <h3 class="sub">Research interests</h3>
+      <div class="interests">
+        <div class="interest">
+          <p class="interest__n">01</p>
+          <h4 class="interest__h">Radar &amp; remote sensing</h4>
+          <p class="interest__p">Synthetic-aperture radar, unmanned aerial platforms, signal processing.</p>
+        </div>
+        <div class="interest">
+          <p class="interest__n">02</p>
+          <h4 class="interest__h">Machine learning systems</h4>
+          <p class="interest__p">Training-data pipelines and the engineering around AI systems.</p>
+        </div>
+        <div class="interest">
+          <p class="interest__n">03</p>
+          <h4 class="interest__h">Neural interfaces</h4>
+          <p class="interest__p">Wireless brain–computer interface hardware and its bring-up.</p>
+        </div>
+        <div class="interest">
+          <p class="interest__n">04</p>
+          <h4 class="interest__h">Research infrastructure</h4>
+          <p class="interest__p">Tooling that carries scholarly work from draft to publication.</p>
+        </div>
       </div>
 
       <dl class="stats">
@@ -184,10 +219,40 @@
       </dl>
     </section>
 
-    <!-- -------------------------- Experience -------------------------- -->
+    <!-- ---------------------------- Contact ---------------------------- -->
+
+    <section class="sec" id="education" aria-labelledby="h-edu">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-edu">Education</h2>
+      </div>
+
+      <ol class="timeline timeline--tight">
+
+        <li class="entry">
+          <div class="entry__when"><time>summer '26</time></div>
+          <div class="entry__body">
+            <h3 class="entry__title">MIT Beaver Works Summer Institute <span class="sep">·</span> UAS-SAR</h3>
+            <p class="entry__what">
+              Selective summer research program in synthetic-aperture radar on unmanned aircraft.
+            </p>
+            <ul class="tags"><li>MIT Lincoln Laboratory</li><li class="tags__hi">1 of 21 from 400+</li></ul>
+          </div>
+        </li>
+
+        <li class="entry">
+          <!-- Add your years between the <time> tags below, e.g. '22 and '26. -->
+          <div class="entry__when"></div>
+          <div class="entry__body">
+            <h3 class="entry__title">Millis High School</h3>
+            <p class="entry__what">Millis, MA.</p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
     <section class="sec" id="experience" aria-labelledby="h-exp">
       <div class="sec__head">
-        <h2 class="sec__title" id="h-exp">Experience</h2>
+        <h2 class="sec__title" id="h-exp">Research Experience</h2>
         <div class="filters" id="exp-filters" role="group" aria-label="Filter experience" hidden>
           <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">all</button>
           <button type="button" class="chip" data-filter="research" aria-pressed="false">research</button>
@@ -267,11 +332,22 @@
       </ol>
       <p class="empty" id="exp-empty" hidden>No roles in that category.</p>
     </section>
-
-    <!-- ----------------------- Research & Projects ---------------------- -->
+    <!-- -------------------------- Publications -------------------------- -->
+    <section class="sec" id="publications" aria-labelledby="h-pubs">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-pubs">Publications</h2>
+      </div>
+      <ol class="pubs">
+        <!-- Copy this <li> for each paper as it lands. -->
+        <li class="pub">
+          <p class="pub__title">To be published <span class="rank">in preparation</span></p>
+          <p class="pub__meta">First paper in progress — details to follow.</p>
+        </li>
+      </ol>
+    </section>
     <section class="sec" id="work" aria-labelledby="h-work">
       <div class="sec__head">
-        <h2 class="sec__title" id="h-work">Research &amp; Projects</h2>
+        <h2 class="sec__title" id="h-work">Projects</h2>
       </div>
 
       <div class="cards">
@@ -349,52 +425,10 @@
         </article>
 
       </div>
-
-      <h3 class="sub">Publications</h3>
-      <ol class="pubs">
-        <!-- Copy this <li> for each paper as it lands. -->
-        <li class="pub">
-          <p class="pub__title">To be published <span class="rank">in preparation</span></p>
-          <p class="pub__meta">First paper in progress — details to follow.</p>
-        </li>
-      </ol>
     </section>
-
-    <!-- --------------------------- Education --------------------------- -->
-    <section class="sec" id="education" aria-labelledby="h-edu">
-      <div class="sec__head">
-        <h2 class="sec__title" id="h-edu">Education</h2>
-      </div>
-
-      <ol class="timeline timeline--tight">
-
-        <li class="entry">
-          <div class="entry__when"><time>summer '26</time></div>
-          <div class="entry__body">
-            <h3 class="entry__title">MIT Beaver Works Summer Institute <span class="sep">·</span> UAS-SAR</h3>
-            <p class="entry__what">
-              Selective summer research program in synthetic-aperture radar on unmanned aircraft.
-            </p>
-            <ul class="tags"><li>MIT Lincoln Laboratory</li><li class="tags__hi">1 of 21 from 400+</li></ul>
-          </div>
-        </li>
-
-        <li class="entry">
-          <!-- Add your years between the <time> tags below, e.g. '22 and '26. -->
-          <div class="entry__when"></div>
-          <div class="entry__body">
-            <h3 class="entry__title">Millis High School</h3>
-            <p class="entry__what">Millis, MA.</p>
-          </div>
-        </li>
-
-      </ol>
-    </section>
-
-    <!-- ---------------------------- Awards ---------------------------- -->
     <section class="sec" id="awards" aria-labelledby="h-awards">
       <div class="sec__head">
-        <h2 class="sec__title" id="h-awards">Awards &amp; Honors</h2>
+        <h2 class="sec__title" id="h-awards">Honors &amp; Awards</h2>
       </div>
 
       <ol class="timeline timeline--tight">
@@ -441,8 +475,6 @@
 
       </ol>
     </section>
-
-    <!-- ---------------------------- Writing ---------------------------- -->
     <section class="sec" id="writing" aria-labelledby="h-writing">
       <div class="sec__head">
         <h2 class="sec__title" id="h-writing">Writing</h2>
@@ -456,8 +488,6 @@
         <svg class="ico linkcard__go" aria-hidden="true"><use href="#i-arrow"/></svg>
       </a>
     </section>
-
-    <!-- ---------------------------- Contact ---------------------------- -->
     <section class="sec" id="contact" aria-labelledby="h-contact">
       <div class="sec__head">
         <h2 class="sec__title" id="h-contact">Contact</h2>

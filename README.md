@@ -8,12 +8,16 @@ no trackers, no external network requests at runtime.
 ## Structure
 
 ```
-index.html      Home — about, experience, research & projects, awards, writing, contact
+index.html      Home — about, education, research experience, publications,
+                projects, honors & awards, writing, contact
 cv.html         Curriculum vitae, print/PDF-ready
 404.html        Not-found page
 css/style.css   All styles (design tokens → components → responsive → print)
 js/main.js      Theme, scrollspy, filters, copy-to-clipboard, command palette
 ```
+
+Sections follow academic CV convention: education and research experience lead, publications
+sit with the research rather than after the skills list, and projects follow.
 
 ## Design
 
@@ -23,12 +27,16 @@ The layout borrows the **author-profile sidebar and academic section model** fro
 project cards** from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
 [bnvac.com](https://bnvac.com).
 
-- **Type** — system font stack, monospace for dates, tags and labels. No webfonts, so no
-  layout shift and no third-party requests.
-- **Color** — zinc-based monochrome with a single teal accent. Light and dark palettes are
-  defined as CSS custom properties; dark overrides only the tokens that change.
-- **Theme** — follows the OS by default. The toggle writes to `localStorage`, and an inline
-  script in `<head>` applies it before first paint so there's no flash.
+- **Type** — three roles, all from system stacks so there are no webfonts, no layout shift
+  and no third-party requests: a **serif** (Georgia and friends) for scholarly display —
+  names, headings, entry and paper titles; a **sans** for reading; a **mono** for dates,
+  tags and labels.
+- **Color** — zinc-based monochrome with a single blue accent (`#1d4ed8` light,
+  `#60a5fa` dark). Status hues for project badges are separate from the accent and lift in
+  dark so they stay legible on near-black.
+- **Theme** — a labeled Light / Dark switch rather than a bare icon, so the current state is
+  readable at a glance. Follows the OS until you choose, then persists in `localStorage`;
+  an inline script in `<head>` applies it before first paint so there's no flash.
 
 ## Behavior
 
@@ -38,9 +46,10 @@ still complete, readable, and every section is visible.
 | Feature | Notes |
 | --- | --- |
 | Command palette | `⌘K` / `Ctrl-K`, or `/`. Arrow keys, `Home`/`End`, `Enter`, `Esc`. Fuzzy subsequence matching, so `cv` finds "View CV". |
-| Theme toggle | Light / dark, persisted. |
+| Theme switch | Labeled Light / Dark control, persisted; tracks the OS until you pick one. |
 | Scrollspy | `IntersectionObserver` marks the section you're reading in the sidebar nav. |
 | Experience filter | all / research / engineering / leadership. Hidden until JS loads. |
+| Sidebar | Sticks when it fits the viewport; below 940px tall it scrolls with the page so nothing is trapped behind a hidden scrollbar. |
 | Copy email | Clipboard API with an `execCommand` fallback for non-secure contexts. |
 
 ## Accessibility

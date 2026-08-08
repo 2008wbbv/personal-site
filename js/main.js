@@ -48,12 +48,33 @@
   function toggleTheme() {
     var next = currentTheme() === "dark" ? "light" : "dark";
     setTheme(next);
+    paintSwitch();
     return next;
   }
 
-  var themeButton = $("#theme-toggle");
-  if (themeButton) {
-    themeButton.addEventListener("click", function () { toggleTheme(); });
+  // Two labeled buttons rather than one icon, so the current theme is legible.
+  var themeSwitch = $("#themeswitch");
+
+  function paintSwitch() {
+    if (!themeSwitch) return;
+    var now = currentTheme();
+    $$("button", themeSwitch).forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.themeSet === now));
+    });
+  }
+
+  if (themeSwitch) {
+    themeSwitch.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-theme-set]");
+      if (!button) return;
+      setTheme(button.dataset.themeSet);
+      paintSwitch();
+    });
+    paintSwitch();
+    // Follow the OS while the visitor has not chosen for themselves.
+    media.addEventListener("change", function () {
+      if (!root.dataset.theme) paintSwitch();
+    });
   }
 
   /* ----------------------------- 2. Scrollspy ----------------------------- */
@@ -176,11 +197,11 @@
 
   var commands = [
     { label: "About",              hint: "section", icon: "#i-arrow",     run: function () { go("#about"); } },
-    { label: "Experience",         hint: "section", icon: "#i-arrow",     run: function () { go("#experience"); } },
-    { label: "Research & Projects",hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
-    { label: "Publications",       hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
     { label: "Education",          hint: "section", icon: "#i-arrow",     run: function () { go("#education"); } },
-    { label: "Awards & Honors",    hint: "section", icon: "#i-arrow",     run: function () { go("#awards"); } },
+    { label: "Research Experience",hint: "section", icon: "#i-arrow",     run: function () { go("#experience"); } },
+    { label: "Publications",       hint: "section", icon: "#i-arrow",     run: function () { go("#publications"); } },
+    { label: "Projects",           hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
+    { label: "Honors & Awards",    hint: "section", icon: "#i-arrow",     run: function () { go("#awards"); } },
     { label: "Writing",            hint: "section", icon: "#i-arrow",     run: function () { go("#writing"); } },
     { label: "Contact",            hint: "section", icon: "#i-arrow",     run: function () { go("#contact"); } },
     { label: "View CV",            hint: "page",    icon: "#i-doc",       run: function () { location.href = "cv.html"; } },

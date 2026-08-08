@@ -1,6 +1,6 @@
 # bnvac.com
 
-Personal site for Ben Vaccaro — wireless BCI and radar systems.
+Personal site for Ben Vaccaro — radar sensing, machine learning systems, neural interfaces.
 
 Vanilla HTML, CSS and JavaScript. No build step, no framework, no dependencies,
 no trackers, no external network requests at runtime.

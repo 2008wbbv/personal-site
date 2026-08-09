@@ -28,7 +28,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-family='ui-monospace,SFMono-Regular,Menlo,monospace' font-size='15' font-weight='700' fill='%23fafafa' text-anchor='middle'%3Ebv%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2318181b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23fafafa' text-anchor='middle'%3Ebv%3C/text%3E%3C/svg%3E">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="styles.css">
 <link rel="me" href="https://github.com/2008wbbv">
 
 <script>
@@ -150,7 +150,7 @@
       <nav class="sidenav" aria-label="Sections">
         <a href="#about"><span class="sidenav__bar" aria-hidden="true"></span>About</a>
         <a href="#education"><span class="sidenav__bar" aria-hidden="true"></span>Education</a>
-        <a href="#experience"><span class="sidenav__bar" aria-hidden="true"></span>Research Experience</a>
+        <a href="#experience"><span class="sidenav__bar" aria-hidden="true"></span>Experience</a>
         <a href="#publications"><span class="sidenav__bar" aria-hidden="true"></span>Publications</a>
         <a href="#work"><span class="sidenav__bar" aria-hidden="true"></span>Projects</a>
         <a href="#awards"><span class="sidenav__bar" aria-hidden="true"></span>Honors &amp; Awards</a>
@@ -271,7 +271,7 @@
     <!-- ---------------------- Research & Experience ---------------------- -->
     <section class="sec" id="experience" aria-labelledby="h-exp">
       <div class="sec__head">
-        <h2 class="sec__title" id="h-exp">Research Experience</h2>
+        <h2 class="sec__title" id="h-exp">Experience</h2>
         <div class="filters" id="exp-filters" role="group" aria-label="Filter experience" hidden>
           <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">all</button>
           <button type="button" class="chip" data-filter="research" aria-pressed="false">research</button>
@@ -508,39 +508,88 @@
 
       </ol>
     </section>
+    <!-- ---------------------------- Certifications ---------------------------- -->
+    <section class="sec" id="certifications" aria-labelledby="h-cert">
+      <div class="sec__head">
+        <h2 class="sec__title" id="h-cert">Certifications</h2>
+      </div>
+
+      <!-- Add one <li class="cert"> per certification. Body and issuer are the
+           only required parts; drop the <span class="cert__when"> if undated. -->
+      <ul class="certs">
+        <li class="cert">
+          <span class="cert__name">Certification name</span>
+          <span class="cert__by">Issuing body</span>
+          <span class="cert__when">2026</span>
+        </li>
+      </ul>
+    </section>
+
     <!-- ---------------------------- Adventures ---------------------------- -->
     <section class="sec" id="adventures" aria-labelledby="h-adv">
       <div class="sec__head">
         <h2 class="sec__title" id="h-adv">Adventures</h2>
       </div>
 
-      <!-- Swap these files in img/adventures/ for your own photographs.
-           Square-ish crops sit best in this grid. -->
-      <div class="shots">
-        <figure class="shot">
-          <img src="img/adventures/01.jpg" alt="Inside a data center aisle" loading="lazy" width="1100" height="1100">
-          <figcaption>Data center</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="img/adventures/02.jpg" alt="" loading="lazy" width="1100" height="1100">
-          <figcaption>Lab bench</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="img/adventures/03.jpg" alt="" loading="lazy" width="1100" height="1100">
-          <figcaption>Field testing</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="img/adventures/04.jpg" alt="" loading="lazy" width="1100" height="1100">
-          <figcaption>Hackathon</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="img/adventures/05.jpg" alt="" loading="lazy" width="1100" height="1100">
-          <figcaption>On the water</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="img/adventures/06.jpg" alt="" loading="lazy" width="1100" height="1100">
-          <figcaption>Somewhere new</figcaption>
-        </figure>
+      <!-- Photographs live in img/adventures/ under the names they were uploaded
+           with — IMG_1234.jpg. To add one, copy a <figure> line and change the
+           number. To regroup, move the line into another <section class="group">. -->
+      <div class="groups">
+        <section class="group" aria-labelledby="g-mit-sar">
+          <h3 class="group__h" id="g-mit-sar">MIT · SAR</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/IMG_2310.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3077.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_2302.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
+        <section class="group" aria-labelledby="g-city">
+          <h3 class="group__h" id="g-city">Adventures in the city</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/IMG_4299.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3067.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3541.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
+        <section class="group" aria-labelledby="g-europe">
+          <h3 class="group__h" id="g-europe">School trip to Europe</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/100_0246.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_2888.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_2922.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3538.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
+        <section class="group" aria-labelledby="g-hackathon">
+          <h3 class="group__h" id="g-hackathon">Hackathon</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/IMG_3490.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3627.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3979.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
+        <section class="group" aria-labelledby="g-robotics">
+          <h3 class="group__h" id="g-robotics">Boston robotics outreach</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/IMG_2534.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_2537.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_3944.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
+        <section class="group" aria-labelledby="g-blueprint">
+          <h3 class="group__h" id="g-blueprint">MIT Blueprint</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/IMG_3986.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_4108.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
+        <section class="group" aria-labelledby="g-camp">
+          <h3 class="group__h" id="g-camp">Camp</h3>
+          <div class="shots">
+          <figure class="shot"><img src="img/adventures/IMG_4168.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          <figure class="shot"><img src="img/adventures/IMG_4185.jpg" alt="" loading="lazy" width="1100" height="1100"></figure>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -619,6 +668,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js" defer></script>
+<script src="main.js" defer></script>
 </body>
 </html>

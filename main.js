@@ -198,7 +198,7 @@
   var commands = [
     { label: "About",              hint: "section", icon: "#i-arrow",     run: function () { go("#about"); } },
     { label: "Education",          hint: "section", icon: "#i-arrow",     run: function () { go("#education"); } },
-    { label: "Research Experience",hint: "section", icon: "#i-arrow",     run: function () { go("#experience"); } },
+    { label: "Experience",         hint: "section", icon: "#i-arrow",     run: function () { go("#experience"); } },
     { label: "Publications",       hint: "section", icon: "#i-arrow",     run: function () { go("#publications"); } },
     { label: "Projects",           hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
     { label: "Honors & Awards",    hint: "section", icon: "#i-arrow",     run: function () { go("#awards"); } },

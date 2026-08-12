@@ -24,8 +24,7 @@ one-page LaTeX version for sending to people. Both carry the same content.
 
 Sections follow academic CV convention: education and experience lead, publications
 sit with the research rather than after the skills list, and projects follow. The
-page opens with the standing summary as a short affiliation list, prose after it,
-and the photographs last.
+page opens with a one-line standing summary, prose after it, and the photographs last.
 
 ## Design
 
@@ -41,9 +40,10 @@ The layout borrows the **author-profile sidebar and academic section model** fro
 - **Type** — Arial, with a mono only for dates and small labels. No webfonts, so no
   layout shift and no third-party requests. Hierarchy comes from weight and size
   rather than a second family, which is the plainer academic register.
-- **Color** — zinc-based monochrome with a single blue accent (`#1d4ed8` light,
-  `#60a5fa` dark). Status hues for project badges are separate from the accent and lift in
-  dark so they stay legible on near-black.
+- **Color** — zinc-based monochrome. The one accent is blue (`#1d4ed8` light, `#60a5fa`
+  dark), spent only where the Restraint note says. Project status survives as a small
+  coloured dot beside a neutral label, so the meaning is kept without the page turning
+  into a set of coloured pills.
 - **Theme** — a labeled Light / Dark switch rather than a bare icon, so the current state is
   readable at a glance. Follows the OS until you choose, then persists in `localStorage`;
   an inline script in `<head>` applies it before first paint so there's no flash.

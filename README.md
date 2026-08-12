@@ -34,9 +34,10 @@ The layout borrows the **author-profile sidebar and academic section model** fro
 **single-column reading rhythm, timeline entries and status-badged project cards** from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
 [bnvac.com](https://bnvac.com).
 
-- **Restraint** — no boxes where whitespace will do. Research interests and the
-  headline statistics are plain type on open ground; the hairline rules and the card
-  borders are the only chrome on the page. Nothing blinks or pulses.
+- **Restraint** — no boxes where whitespace will do, and no decorative colour. Blue
+  appears in exactly three places: inline links, the focus ring, and the marker on the
+  active nav item. Everything else — highlighted tags, award ranks, status badges — is
+  monochrome, carrying emphasis by weight and rule instead. Nothing blinks or pulses.
 - **Type** — Arial, with a mono only for dates and small labels. No webfonts, so no
   layout shift and no third-party requests. Hierarchy comes from weight and size
   rather than a second family, which is the plainer academic register.
@@ -60,6 +61,7 @@ still complete, readable, and every section is visible.
 | Sidebar | Sticks when it fits the viewport; below 940px tall it scrolls with the page so nothing is trapped behind a hidden scrollbar. |
 | Photo grids | Track-based, no breakpoints of their own: one column on a phone through four on a wide screen. |
 | Photos | Plain `<img>`, lazy-loaded, with width/height set so nothing reflows. The portrait falls back to a monogram when the file is absent. |
+| Certifications | Linked rows with the issuer's mark: logo, name, issuer, year. The logo is optional — drop the `<img>` and the row still lines up. |
 | Copy email | Clipboard API with an `execCommand` fallback for non-secure contexts. |
 
 ## Accessibility
@@ -110,8 +112,11 @@ trim a bullet rather than shrinking the margins.
 - **Adventure groupings** — the seven groups are in place but which photo sits in
   which group is a first pass. Each photo is one `<figure>` line; move the line
   into another `<section class="group">` to regroup.
-- **Certifications** holds one template row in `index.html`. Copy the
-  `<li class="cert">` per certification.
+- **Certifications** holds two template rows in `index.html`. Each needs a name, a
+  verification URL on the `<a>`, an issuer, a year, and optionally a square logo at
+  `img/certs/<name>.png`.
+- **Links in the bio** — the organisations in the opening paragraphs are plain text.
+  Give me URLs and they become links, which is where the accent colour belongs.
 - **Publications** currently hold a single "To be published / in preparation" entry in
   `index.html`, `cv.html` and `cv/cv.tex`. Copy the marked `<li class="pub">`,
   `<div class="row">` or `\item` for each paper as it lands.

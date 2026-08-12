@@ -32,8 +32,10 @@
 <link rel="me" href="https://github.com/2008wbbv">
 
 <script>
-/* Set theme before first paint to avoid a flash of the wrong colors. */
+/* Runs before first paint: applies the saved theme so there is no flash, and
+   marks the document as scripted so the CSS can rely on the greedy nav. */
 (function () {
+  document.documentElement.classList.add("js");
   try {
     var t = localStorage.getItem("theme");
     if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
@@ -82,6 +84,41 @@
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol>
 </svg>
 
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <nav class="greedy-nav" id="site-nav" aria-label="Sections">
+      <ul class="visible-links">
+        <li class="masthead__menu-item masthead__menu-item--lg"><a href="#about">Ben Vaccaro</a></li>
+        <li class="masthead__menu-item"><a href="#about">About</a></li>
+        <li class="masthead__menu-item"><a href="#education">Education</a></li>
+        <li class="masthead__menu-item"><a href="#experience">Experience</a></li>
+        <li class="masthead__menu-item"><a href="#publications">Publications</a></li>
+        <li class="masthead__menu-item"><a href="#work">Projects</a></li>
+        <li class="masthead__menu-item"><a href="#awards">Honors &amp; Awards</a></li>
+        <li class="masthead__menu-item"><a href="#certifications">Certifications</a></li>
+        <li class="masthead__menu-item"><a href="#writing">Writing</a></li>
+        <li class="masthead__menu-item"><a href="#adventures">Adventures</a></li>
+        <li class="masthead__menu-item"><a href="#contact">Contact</a></li>
+        <li class="masthead__menu-item tail">
+          <div class="themeswitch" id="themeswitch" role="group" aria-label="Color theme">
+            <button type="button" data-theme-set="light" aria-pressed="false">
+              <svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><span>Light</span>
+            </button>
+            <button type="button" data-theme-set="dark" aria-pressed="false">
+              <svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg><span>Dark</span>
+            </button>
+          </div>
+        </li>
+      </ul>
+      <button type="button" class="greedy-nav__toggle" hidden
+              aria-expanded="false" aria-label="More sections">
+        <span class="navicon" aria-hidden="true"></span>
+      </button>
+      <ul class="hidden-links" hidden></ul>
+    </nav>
+  </div>
+</div>
+
 <div class="shell">
 
   <!-- ============ Author profile sidebar (academicpages pattern) ============ -->
@@ -111,7 +148,7 @@
         <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Boston, MA
       </p>
 
-      <ul class="profile__links">
+      <ul class="profile__links author__urls">
         <li><a href="mailto:benvaccaro@proton.me"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a></li>
         <li><a href="https://github.com/2008wbbv" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span></a></li>
         <li><a href="https://www.linkedin.com/in/bnvac" rel="me noopener"><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
@@ -125,28 +162,6 @@
         </a>
         <a class="btn btn--pdf" href="cv/cv.pdf" title="One-page typeset PDF">PDF</a>
       </div>
-
-      <div class="themeswitch" id="themeswitch" role="group" aria-label="Color theme">
-        <button type="button" data-theme-set="light" aria-pressed="false">
-          <svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg>Light
-        </button>
-        <button type="button" data-theme-set="dark" aria-pressed="false">
-          <svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg>Dark
-        </button>
-      </div>
-
-      <nav class="sidenav" aria-label="Sections">
-        <a href="#about"><span class="sidenav__bar" aria-hidden="true"></span>About</a>
-        <a href="#education"><span class="sidenav__bar" aria-hidden="true"></span>Education</a>
-        <a href="#experience"><span class="sidenav__bar" aria-hidden="true"></span>Experience</a>
-        <a href="#publications"><span class="sidenav__bar" aria-hidden="true"></span>Publications</a>
-        <a href="#work"><span class="sidenav__bar" aria-hidden="true"></span>Projects</a>
-        <a href="#awards"><span class="sidenav__bar" aria-hidden="true"></span>Honors &amp; Awards</a>
-        <a href="#certifications"><span class="sidenav__bar" aria-hidden="true"></span>Certifications</a>
-        <a href="#writing"><span class="sidenav__bar" aria-hidden="true"></span>Writing</a>
-        <a href="#adventures"><span class="sidenav__bar" aria-hidden="true"></span>Adventures</a>
-        <a href="#contact"><span class="sidenav__bar" aria-hidden="true"></span>Contact</a>
-      </nav>
 
     </div>
   </header>
@@ -204,7 +219,6 @@
         </div>
       </dl>
     </section>
-
 
     <!-- ---------------------------- Education ---------------------------- -->
     <section class="sec" id="education" aria-labelledby="h-edu">
@@ -630,7 +644,6 @@
 
   </main>
 </div>
-
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

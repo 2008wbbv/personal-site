@@ -4,9 +4,10 @@
    with scripting off the page is still complete and readable.
 
    1. theme        light / dark, remembered, follows the OS until you choose
-   2. scrollspy    highlights the section you're reading
-   3. filters      experience by category
-   4. copy         email to clipboard
+   2. greedy nav   keeps the masthead to one row, overflow in a menu
+   3. scrollspy    highlights the section you're reading
+   4. filters      experience by category
+   5. copy         email to clipboard
    ========================================================================== */
 
 (function () {
@@ -76,9 +77,70 @@
     });
   }
 
-  /* ----------------------------- 2. Scrollspy ----------------------------- */
+  /* ---------------------------- 2. Greedy nav ----------------------------- */
 
-  var navLinks = $$(".sidenav a");
+  // The template keeps the masthead to a single row: links that no longer fit
+  // move into an overflow menu, and come back when the window widens.
+  var nav      = $("#site-nav");
+  var navVisible  = $(".visible-links", nav);
+  var navHidden   = $(".hidden-links", nav);
+  var navMore  = $(".greedy-nav__toggle", nav);
+
+  function movable() {
+    return $$(".masthead__menu-item", navVisible).filter(function (li) {
+      return !li.classList.contains("masthead__menu-item--lg") &&
+             !li.classList.contains("tail");
+    });
+  }
+
+  function fitNav() {
+    while (navHidden.firstChild) {
+      navVisible.insertBefore(navHidden.firstChild, $(".tail", navVisible));
+    }
+    navMore.hidden = true;
+    navHidden.hidden = true;
+
+    var items = movable();
+    var i = items.length - 1;
+    while (navVisible.scrollWidth > navVisible.clientWidth + 1 && i >= 0) {
+      navHidden.insertBefore(items[i], navHidden.firstChild);
+      navMore.hidden = false;
+      i--;
+    }
+  }
+
+  if (nav && navVisible && navHidden && navMore) {
+    fitNav();
+    // Fonts and images settle after first paint; re-fit once they have.
+    window.addEventListener("load", fitNav);
+    var fitTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(fitTimer);
+      fitTimer = setTimeout(fitNav, 120);
+    }, { passive: true });
+
+    navMore.addEventListener("click", function () {
+      var open = navMore.getAttribute("aria-expanded") === "true";
+      navMore.setAttribute("aria-expanded", String(!open));
+      navHidden.hidden = open;
+    });
+
+    document.addEventListener("click", function (event) {
+      if (nav.contains(event.target)) return;
+      navMore.setAttribute("aria-expanded", "false");
+      navHidden.hidden = true;
+    });
+
+    navHidden.addEventListener("click", function () {
+      navMore.setAttribute("aria-expanded", "false");
+      navHidden.hidden = true;
+    });
+  }
+
+  /* ----------------------------- 3. Scrollspy ----------------------------- */
+
+  // Every masthead section link except the site title, which repeats #about.
+  var navLinks = $$('.masthead__menu-item:not(.masthead__menu-item--lg) a[href^="#"]');
   var sections = navLinks
     .map(function (link) { return document.getElementById(link.hash.slice(1)); })
     .filter(Boolean);
@@ -121,7 +183,7 @@
     }, { passive: true });
   }
 
-  /* ------------------------------ 3. Filters ------------------------------ */
+  /* ------------------------------ 4. Filters ------------------------------ */
 
   var filterBar = $("#exp-filters");
   var entries   = $$("#exp-list .entry");
@@ -159,7 +221,7 @@
     });
   }
 
-  /* ------------------------------- 4. Copy -------------------------------- */
+  /* ------------------------------- 5. Copy -------------------------------- */
 
   function copy(text) {
     if (navigator.clipboard && window.isSecureContext) {

@@ -28,9 +28,12 @@ page opens with a one-line standing summary, prose after it, and the photographs
 
 ## Design
 
-The layout borrows the **author-profile sidebar and academic section model** from
-[academicpages](https://github.com/academicpages/academicpages.github.io), and the
-**single-column reading rhythm, timeline entries and status-badged project cards** from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
+The page follows [academicpages](https://github.com/academicpages/academicpages.github.io)
+closely: a fixed masthead carrying the site title, the section links and the theme
+control; the author-profile sidebar with a circular portrait and icon links; a 925px
+measure; and section headings ruled underneath. Its text and border colours
+(`#494e52`, `#f2f3f3`) are the template's own. Timeline entries and status-badged
+project cards come from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
 [bnvac.com](https://bnvac.com).
 
 - **Restraint** — no boxes where whitespace will do, and no decorative colour. Blue
@@ -56,7 +59,8 @@ still complete, readable, and every section is visible.
 | Feature | Notes |
 | --- | --- |
 | Theme switch | Labeled Light / Dark control, persisted; tracks the OS until you pick one. |
-| Scrollspy | `IntersectionObserver` marks the section you're reading in the sidebar nav, with the last section pinned once you reach the bottom — a short closing section can never win on visible area. |
+| Greedy nav | The masthead stays one row: links that do not fit move into an overflow menu and return when the window widens, re-fitting on load and resize. Without JavaScript the bar sits in flow and wraps instead, so every link stays reachable. |
+| Scrollspy | `IntersectionObserver` marks the section you're reading in the masthead, with the last section pinned once you reach the bottom — a short closing section can never win on visible area. |
 | Experience filter | all / research / engineering / leadership. Hidden until JS loads. |
 | Sidebar | Sticks when it fits the viewport; below 940px tall it scrolls with the page so nothing is trapped behind a hidden scrollbar. |
 | Photo grids | Track-based, no breakpoints of their own: one column on a phone through four on a wide screen. |
@@ -67,8 +71,8 @@ still complete, readable, and every section is visible.
 ## Accessibility
 
 Semantic landmarks, a skip link, visible focus rings, a visually-hidden heading naming the
-opening section, and `prefers-reduced-motion` honored throughout. The sidebar nav mirrors
-the section order exactly.
+opening section, and `prefers-reduced-motion` honored throughout. The masthead nav mirrors
+the section order exactly, and its overflow menu is keyboard reachable.
 
 ## Running locally
 

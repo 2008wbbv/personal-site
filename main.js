@@ -7,7 +7,6 @@
    2. scrollspy    highlights the section you're reading
    3. filters      experience by category
    4. copy         email to clipboard
-   5. palette      ⌘K / Ctrl-K quick navigation
    ========================================================================== */
 
 (function () {
@@ -108,6 +107,18 @@
     });
 
     sections.forEach(function (section) { spy.observe(section); });
+
+    // At the very bottom a short final section can never win on visible area,
+    // so the last section is the one being read no matter what the ratios say.
+    window.addEventListener("scroll", function () {
+      var atEnd = window.innerHeight + window.scrollY >=
+                  document.documentElement.scrollHeight - 8;
+      if (!atEnd) return;
+      var last = "#" + sections[sections.length - 1].id;
+      navLinks.forEach(function (link) {
+        link.classList.toggle("is-active", link.hash === last);
+      });
+    }, { passive: true });
   }
 
   /* ------------------------------ 3. Filters ------------------------------ */
@@ -187,209 +198,4 @@
     });
   }
 
-  /* ----------------------------- 5. Palette ------------------------------- */
-
-  var palette   = $("#palette");
-  var paletteIn = $("#palette-input");
-  var list      = $("#palette-list");
-  var noResults = $("#palette-empty");
-  var openers   = [$("#palette-open")].filter(Boolean);
-
-  var commands = [
-    { label: "About",              hint: "section", icon: "#i-arrow",     run: function () { go("#about"); } },
-    { label: "Education",          hint: "section", icon: "#i-arrow",     run: function () { go("#education"); } },
-    { label: "Experience",         hint: "section", icon: "#i-arrow",     run: function () { go("#experience"); } },
-    { label: "Publications",       hint: "section", icon: "#i-arrow",     run: function () { go("#publications"); } },
-    { label: "Projects",           hint: "section", icon: "#i-arrow",     run: function () { go("#work"); } },
-    { label: "Honors & Awards",    hint: "section", icon: "#i-arrow",     run: function () { go("#awards"); } },
-    { label: "Writing",            hint: "section", icon: "#i-arrow",     run: function () { go("#writing"); } },
-    { label: "Contact",            hint: "section", icon: "#i-arrow",     run: function () { go("#contact"); } },
-    { label: "View CV",            hint: "page",    icon: "#i-doc",       run: function () { location.href = "cv.html"; } },
-    { label: "Email Ben",          hint: "benvaccaro@proton.me", icon: "#i-mail", run: function () { location.href = "mailto:benvaccaro@proton.me"; } },
-    { label: "Copy email address", hint: "clipboard", icon: "#i-copy",    run: function () {
-        copy("benvaccaro@proton.me").then(function () { flash("Email copied to clipboard"); });
-      } },
-    { label: "GitHub",             hint: "2008wbbv", icon: "#i-github",   run: function () { open_("https://github.com/2008wbbv"); } },
-    { label: "LinkedIn",           hint: "in/bnvac", icon: "#i-linkedin", run: function () { open_("https://www.linkedin.com/in/bnvac"); } },
-    { label: "Substack",           hint: "bnvac.substack.com", icon: "#i-substack", run: function () { open_("https://bnvac.substack.com"); } },
-    { label: "Instagram",          hint: "@bnvac",  icon: "#i-instagram", run: function () { open_("https://instagram.com/bnvac"); } },
-    { label: "Toggle theme",       hint: "light / dark", icon: "#i-moon", run: function () {
-        flash(toggleTheme() === "dark" ? "Dark theme" : "Light theme");
-      } }
-  ];
-
-  function go(hash) {
-    var target = document.querySelector(hash);
-    if (!target) return;
-    target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
-    history.replaceState(null, "", hash);
-  }
-
-  function open_(url) {
-    window.open(url, "_blank", "noopener");
-  }
-
-  function prefersReducedMotion() {
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  }
-
-  var matches = [];
-  var cursor  = 0;
-
-  function score(command, query) {
-    var haystack = (command.label + " " + command.hint).toLowerCase();
-    if (!query) return 1;
-    if (haystack.indexOf(query) !== -1) return 2;
-
-    // Loose subsequence match, so "cv" finds "View CV" and "gh" finds "GitHub".
-    var at = 0;
-    for (var i = 0; i < query.length; i++) {
-      at = haystack.indexOf(query[i], at);
-      if (at === -1) return 0;
-      at++;
-    }
-    return 1;
-  }
-
-  function render(query) {
-    query = (query || "").trim().toLowerCase();
-
-    matches = commands
-      .map(function (command) { return { command: command, rank: score(command, query) }; })
-      .filter(function (row) { return row.rank > 0; })
-      .sort(function (a, b) { return b.rank - a.rank; })
-      .map(function (row) { return row.command; });
-
-    cursor = 0;
-    list.textContent = "";
-
-    matches.forEach(function (command, index) {
-      var item = document.createElement("li");
-      item.className = "palette__item";
-      item.setAttribute("role", "option");
-      item.id = "palette-opt-" + index;
-      item.setAttribute("aria-selected", String(index === 0));
-
-      var icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      icon.setAttribute("class", "ico");
-      icon.setAttribute("aria-hidden", "true");
-      var use = document.createElementNS("http://www.w3.org/2000/svg", "use");
-      use.setAttribute("href", command.icon);
-      icon.appendChild(use);
-
-      var label = document.createElement("span");
-      label.textContent = command.label;
-
-      var hint = document.createElement("small");
-      hint.textContent = command.hint;
-
-      item.append(icon, label, hint);
-
-      item.addEventListener("click", function () { fire(index); });
-      item.addEventListener("mousemove", function () { select(index); });
-
-      list.appendChild(item);
-    });
-
-    noResults.hidden = matches.length > 0;
-    syncActiveDescendant();
-  }
-
-  function select(index) {
-    if (!matches.length) return;
-    cursor = (index + matches.length) % matches.length;
-    $$(".palette__item", list).forEach(function (item, i) {
-      item.setAttribute("aria-selected", String(i === cursor));
-      if (i === cursor) item.scrollIntoView({ block: "nearest" });
-    });
-    syncActiveDescendant();
-  }
-
-  function syncActiveDescendant() {
-    if (matches.length) paletteIn.setAttribute("aria-activedescendant", "palette-opt-" + cursor);
-    else paletteIn.removeAttribute("aria-activedescendant");
-  }
-
-  function fire(index) {
-    var command = matches[typeof index === "number" ? index : cursor];
-    if (!command) return;
-    closePalette();
-    command.run();
-  }
-
-  var lastFocused = null;
-
-  function openPalette() {
-    if (!palette.hidden) return;
-    lastFocused = document.activeElement;
-    palette.hidden = false;
-    document.body.style.overflow = "hidden";
-    paletteIn.value = "";
-    render("");
-    paletteIn.focus();
-  }
-
-  function closePalette() {
-    if (palette.hidden) return;
-    palette.hidden = true;
-    document.body.style.overflow = "";
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
-  }
-
-  if (palette && paletteIn && list) {
-    openers.forEach(function (button) { button.addEventListener("click", openPalette); });
-
-    $$("[data-close]", palette).forEach(function (el) {
-      el.addEventListener("click", closePalette);
-    });
-
-    paletteIn.addEventListener("input", function () { render(paletteIn.value); });
-
-    paletteIn.addEventListener("keydown", function (event) {
-      switch (event.key) {
-        case "ArrowDown": event.preventDefault(); select(cursor + 1); break;
-        case "ArrowUp":   event.preventDefault(); select(cursor - 1); break;
-        case "Home":      event.preventDefault(); select(0); break;
-        case "End":       event.preventDefault(); select(matches.length - 1); break;
-        case "Enter":     event.preventDefault(); fire(); break;
-        case "Escape":    event.preventDefault(); closePalette(); break;
-      }
-    });
-
-    // Keep focus inside the dialog while it is open.
-    palette.addEventListener("keydown", function (event) {
-      if (event.key === "Tab") { event.preventDefault(); paletteIn.focus(); }
-    });
-
-    document.addEventListener("keydown", function (event) {
-      var isShortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k";
-      if (isShortcut) {
-        event.preventDefault();
-        palette.hidden ? openPalette() : closePalette();
-        return;
-      }
-
-      if (event.key === "Escape" && !palette.hidden) closePalette();
-
-      // "/" opens the palette, unless the user is already typing somewhere.
-      if (event.key === "/" && palette.hidden) {
-        var tag = (document.activeElement && document.activeElement.tagName) || "";
-        if (tag !== "INPUT" && tag !== "TEXTAREA" && !document.activeElement.isContentEditable) {
-          event.preventDefault();
-          openPalette();
-        }
-      }
-    });
-  }
-
-  /* ------------------------------ Housekeeping ---------------------------- */
-
-  // Show the right modifier key for the platform.
-  var hint = $("#kbd-hint");
-  if (hint && !/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) {
-    hint.textContent = "Ctrl K";
-  }
-
-  var year = $("#year");
-  if (year) year.textContent = String(new Date().getFullYear());
 })();

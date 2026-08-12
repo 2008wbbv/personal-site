@@ -8,15 +8,14 @@ no trackers, no external network requests at runtime.
 ## Structure
 
 ```
-index.html      Home — about, education, experience, publications,
-                projects, honors & awards, certifications, adventures,
-                writing, contact
+index.html      Home — about, education, experience, publications, projects,
+                honors & awards, certifications, writing, adventures, contact
 cv.html         Curriculum vitae, web version
 cv/cv.tex       Curriculum vitae, LaTeX source — one page
 cv/cv.pdf       Typeset output (pdflatex cv.tex)
 404.html        Not-found page
 styles.css      All styles (design tokens → components → responsive → print)
-main.js         Theme, scrollspy, filters, copy-to-clipboard, command palette
+main.js         Theme, scrollspy, experience filters, copy-to-clipboard
 img/            Photographs — see img/README.md
 ```
 
@@ -24,23 +23,23 @@ The CV exists twice on purpose: `cv.html` for reading in a browser, and a
 one-page LaTeX version for sending to people. Both carry the same content.
 
 Sections follow academic CV convention: education and experience lead, publications
-sit with the research rather than after the skills list, and projects follow.
+sit with the research rather than after the skills list, and projects follow. The
+page opens with the standing summary as a short affiliation list, prose after it,
+and the photographs last.
 
 ## Design
 
 The layout borrows the **author-profile sidebar and academic section model** from
 [academicpages](https://github.com/academicpages/academicpages.github.io), and the
-**single-column reading rhythm, command palette, timeline entries and status-badged
-project cards** from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
+**single-column reading rhythm, timeline entries and status-badged project cards** from [ashutoshx7.me](https://www.ashutoshx7.me/). Content comes from
 [bnvac.com](https://bnvac.com).
 
 - **Restraint** — no boxes where whitespace will do. Research interests and the
   headline statistics are plain type on open ground; the hairline rules and the card
   borders are the only chrome on the page. Nothing blinks or pulses.
-- **Type** — three roles, all from system stacks so there are no webfonts, no layout shift
-  and no third-party requests: a **serif** (Georgia and friends) for scholarly display —
-  names, headings, entry and paper titles; a **sans** for reading; a **mono** for dates,
-  tags and labels.
+- **Type** — Arial, with a mono only for dates and small labels. No webfonts, so no
+  layout shift and no third-party requests. Hierarchy comes from weight and size
+  rather than a second family, which is the plainer academic register.
 - **Color** — zinc-based monochrome with a single blue accent (`#1d4ed8` light,
   `#60a5fa` dark). Status hues for project badges are separate from the accent and lift in
   dark so they stay legible on near-black.
@@ -55,9 +54,8 @@ still complete, readable, and every section is visible.
 
 | Feature | Notes |
 | --- | --- |
-| Command palette | `⌘K` / `Ctrl-K`, or `/`. Arrow keys, `Home`/`End`, `Enter`, `Esc`. Fuzzy subsequence matching, so `cv` finds "View CV". |
 | Theme switch | Labeled Light / Dark control, persisted; tracks the OS until you pick one. |
-| Scrollspy | `IntersectionObserver` marks the section you're reading in the sidebar nav. |
+| Scrollspy | `IntersectionObserver` marks the section you're reading in the sidebar nav, with the last section pinned once you reach the bottom — a short closing section can never win on visible area. |
 | Experience filter | all / research / engineering / leadership. Hidden until JS loads. |
 | Sidebar | Sticks when it fits the viewport; below 940px tall it scrolls with the page so nothing is trapped behind a hidden scrollbar. |
 | Photo grids | Track-based, no breakpoints of their own: one column on a phone through four on a wide screen. |
@@ -66,8 +64,9 @@ still complete, readable, and every section is visible.
 
 ## Accessibility
 
-Semantic landmarks, a skip link, visible focus rings, `aria-*` on the palette combobox and
-listbox, focus restored on dialog close, and `prefers-reduced-motion` honored throughout.
+Semantic landmarks, a skip link, visible focus rings, a visually-hidden heading naming the
+opening section, and `prefers-reduced-motion` honored throughout. The sidebar nav mirrors
+the section order exactly.
 
 ## Running locally
 
@@ -91,7 +90,6 @@ Static files, so any host works. For GitHub Pages, push and enable Pages on the 
 - **Experience filters** read the `data-cat` attribute on each `.entry`
   (`research`, `engineering`, `leadership`).
 - **Project status badges** are `badge--live`, `badge--build`, `badge--done`.
-- **Palette entries** are the `commands` array near the bottom of `main.js`.
 - **Colors and spacing** are the custom properties in the `:root` block of `styles.css`.
 
 ## Building the CV

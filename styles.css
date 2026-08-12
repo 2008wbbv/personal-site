@@ -2,7 +2,7 @@
    bnvac.com — Ben Vaccaro
    Vanilla CSS. No preprocessor, no framework, no external fonts.
    Structure: tokens → reset → layout → sidebar → sections → components →
-              command palette → responsive → print
+              responsive → print
    ========================================================================== */
 
 /* --------------------------------- Tokens -------------------------------- */
@@ -34,10 +34,8 @@
   --shadow-md: 0 4px 12px -2px rgb(24 24 27 / .08), 0 2px 4px -2px rgb(24 24 27 / .04);
   --shadow-lg: 0 24px 48px -12px rgb(24 24 27 / .18), 0 0 0 1px rgb(24 24 27 / .05);
 
-  /* Three roles: a serif for scholarly display, a sans for reading, a mono for data. */
-  --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-          Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  /* Two roles: Arial for everything read, a mono for dates and labels. */
+  --font: Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
           "Liberation Mono", monospace;
 
@@ -265,10 +263,9 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 }
 
 .profile__name {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -.015em;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -.02em;
   line-height: 1.2;
 }
 
@@ -380,36 +377,11 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 .sidenav a.is-active { color: var(--ink); font-weight: 550; }
 .sidenav a.is-active .sidenav__bar { width: 26px; opacity: 1; background: var(--accent); }
 
-.profile__tools {
-  display: flex;
-  gap: 8px;
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-.tool {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-  padding: 7px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--bg-sunken);
-  font-size: 13px;
-  color: var(--ink-faint);
-  transition: border-color .15s, color .15s;
-}
-.tool:hover { border-color: var(--line-strong); color: var(--ink); }
-.tool .kbd { margin-left: auto; }
-.tool--icon { flex: none; justify-content: center; width: 36px; padding: 7px 0; }
-
-/* Theme switch: both states visible, so it reads as a control, not a mystery icon. */
 .themeswitch {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
-  margin-top: 10px;
+  margin-top: 12px;
   padding: 3px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -482,10 +454,12 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 }
 
 .sub {
-  margin: 44px 0 18px;
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 600;
+  margin: 40px 0 14px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
   letter-spacing: -.01em;
 }
 
@@ -516,28 +490,46 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   50%      { opacity: .4; }
 }
 
-.hero__title {
-  margin-top: 18px;
-  font-family: var(--serif);
-  font-size: clamp(29px, 4.8vw, 42px);
-  font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: -.022em;
-  max-width: 24ch;
-  text-wrap: balance;
-}
-.hero__title em {
-  font-style: italic;
-  color: var(--accent);
+.vh {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-.hero__sub {
-  margin-top: 16px;
-  font-size: 15.5px;
-  line-height: 1.6;
+.standfirst {
+  font-size: clamp(19px, 2.4vw, 23px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+  max-width: 26ch;
+}
+
+.affil {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 7px 20px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+/* The <li> dissolves so both columns join the list's own grid and align. */
+.affil li { display: contents; }
+.affil__role {
+  font-size: 11.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
   color: var(--ink-faint);
-  max-width: 58ch;
-  letter-spacing: -.005em;
+  padding-top: 3px;
+}
+
+@media (max-width: 560px) {
+  .affil { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .affil li + li .affil__role { margin-top: 10px; }
 }
 
 .prose {
@@ -590,9 +582,8 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   margin-top: 26px;
 }
 .interest dt {
-  font-family: var(--serif);
-  font-size: 16.5px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: -.01em;
 }
 .interest dd {
@@ -615,7 +606,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   border-bottom: 1px solid var(--line);
 }
 .cert:last-child { border-bottom: 0; }
-.cert__name { font-family: var(--serif); font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.cert__name { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
 .cert__by { grid-column: 1; font-size: 13.5px; color: var(--ink-soft); }
 .cert__when {
   grid-row: 1 / span 2;
@@ -719,9 +710,8 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 .entry__when time ~ time::before { content: "–"; margin: 0 .35em; }
 
 .entry__title {
-  font-family: var(--serif);
-  font-size: 17.5px;
-  font-weight: 600;
+  font-size: 15.5px;
+  font-weight: 700;
   letter-spacing: -.01em;
   line-height: 1.35;
 }
@@ -820,9 +810,8 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   margin-bottom: 9px;
 }
 .card__title {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: -.01em;
   line-height: 1.3;
 }
@@ -864,7 +853,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
 .pubs { display: flex; flex-direction: column; }
 .pub { padding: 14px 0; border-bottom: 1px solid var(--line); }
 .pub:last-child { border-bottom: 0; }
-.pub__title { font-family: var(--serif); font-size: 16.5px; font-weight: 600; letter-spacing: -.01em; }
+.pub__title { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
 .pub__title a { border-bottom: 1px solid var(--line-strong); }
 .pub__title a:hover { color: var(--accent); border-color: var(--accent); }
 .pub__meta { margin-top: 3px; font-size: 13.5px; color: var(--ink-faint); }
@@ -922,105 +911,6 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   color: var(--ink-faint);
 }
 .foot__note { margin-top: 3px; color: var(--ink-ghost); }
-
-/* ----------------------------- Command palette ---------------------------- */
-
-.palette {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  display: grid;
-  place-items: start center;
-  padding: clamp(16px, 12vh, 120px) 16px 16px;
-}
-.palette[hidden] { display: none; }
-
-.palette__scrim {
-  position: absolute;
-  inset: 0;
-  background: rgb(9 9 11 / .45);
-  backdrop-filter: blur(3px);
-  animation: fade .16s ease both;
-}
-@keyframes fade { from { opacity: 0; } }
-
-.palette__box {
-  position: relative;
-  width: min(560px, 100%);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-lg);
-  background: var(--bg-raised);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  animation: pop .18s var(--ease) both;
-}
-@keyframes pop {
-  from { opacity: 0; transform: translateY(-8px) scale(.985); }
-}
-
-.palette__field {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 15px;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-faint);
-}
-.palette__field input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: none;
-  font-size: 15px;
-  color: var(--ink);
-}
-.palette__field input::placeholder { color: var(--ink-ghost); }
-
-.palette__list {
-  max-height: min(48vh, 380px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 6px;
-}
-.palette__item {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  width: 100%;
-  padding: 9px 11px;
-  border-radius: var(--r-sm);
-  font-size: 14px;
-  color: var(--ink-soft);
-  cursor: pointer;
-  text-align: left;
-}
-.palette__item .ico { color: var(--ink-ghost); }
-.palette__item small {
-  margin-left: auto;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-ghost);
-  white-space: nowrap;
-}
-.palette__item[aria-selected="true"] {
-  background: var(--bg-hover);
-  color: var(--ink);
-}
-.palette__item[aria-selected="true"] .ico { color: var(--accent); }
-
-.palette__empty { padding: 26px 16px; text-align: center; font-size: 14px; color: var(--ink-faint); }
-
-.palette__foot {
-  display: flex;
-  gap: 16px;
-  padding: 9px 14px;
-  border-top: 1px solid var(--line);
-  background: var(--bg-sunken);
-  font-size: 11.5px;
-  color: var(--ink-ghost);
-}
-.palette__foot span { display: inline-flex; align-items: center; gap: 5px; }
 
 /* ---------------------------------- Toast --------------------------------- */
 
@@ -1082,7 +972,6 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
   .hero__title { max-width: none; }
   .cards { grid-template-columns: minmax(0, 1fr); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .palette__foot { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1102,7 +991,7 @@ svg.ico:has(use[href="#i-substack"]) { fill: currentColor; stroke: none; }
     --ink: #000; --ink-soft: #333; --ink-faint: #555; --ink-ghost: #777;
     --line: #ccc; --line-strong: #999; --accent: #000;
   }
-  .profile__tools, .sidenav, .btn--cv, .palette, .toast, .skip-link, .caret { display: none !important; }
+  .sidenav, .cvpair, .themeswitch, .toast, .skip-link { display: none !important; }
   .shell { display: block; max-width: none; padding: 0; }
   .profile__inner { position: static; padding: 0 0 18px; max-height: none; }
   .main { padding: 0; }

@@ -5,7 +5,7 @@
 
    1. theme        light / dark, remembered, follows the OS until you choose
    2. greedy nav   keeps the masthead to one row, overflow in a menu
-   3. scrollspy    highlights the section you're reading
+   3. views        each masthead link swaps the body for that section
    4. filters      experience by category
    5. copy         email to clipboard
    ========================================================================== */
@@ -137,50 +137,51 @@
     });
   }
 
-  /* ----------------------------- 3. Scrollspy ----------------------------- */
+  /* ------------------------------- 3. Views ------------------------------- */
 
-  // Every masthead section link except the site title, which repeats #about.
-  var navLinks = $$('.masthead__menu-item:not(.masthead__menu-item--lg) a[href^="#"]');
-  var sections = navLinks
-    .map(function (link) { return document.getElementById(link.hash.slice(1)); })
-    .filter(Boolean);
+  // Each masthead link swaps the body for that section rather than scrolling to
+  // it. Without scripting every section stays in the document, one after the
+  // other, so the page reads top to bottom as ordinary HTML.
+  var viewLinks = $$('.masthead__menu-item:not(.masthead__menu-item--lg) a[href^="#"]');
+  var views     = $$(".sec");
+  var titleBase = document.title;
 
-  if (sections.length && "IntersectionObserver" in window) {
-    var visible = new Map();
+  function nameOf(id) {
+    var link = viewLinks.filter(function (a) { return a.hash === "#" + id; })[0];
+    return link ? link.textContent.trim() : "";
+  }
 
-    var spy = new IntersectionObserver(function (records) {
-      records.forEach(function (record) {
-        visible.set(record.target.id, record.isIntersecting ? record.intersectionRatio : 0);
-      });
+  function showView(id, push) {
+    if (!views.some(function (v) { return v.id === id; })) id = views[0].id;
 
-      var bestId = null;
-      var bestRatio = 0;
-      visible.forEach(function (ratio, id) {
-        if (ratio > bestRatio) { bestRatio = ratio; bestId = id; }
-      });
-
-      if (!bestId) return;
-      navLinks.forEach(function (link) {
-        link.classList.toggle("is-active", link.hash === "#" + bestId);
-      });
-    }, {
-      rootMargin: "-12% 0px -55% 0px",
-      threshold: [0, 0.15, 0.4, 0.75, 1]
+    views.forEach(function (v) { v.hidden = v.id !== id; });
+    // The site title also points at #about, but it is a brand, not a nav state.
+    viewLinks.concat($$(".hidden-links a")).forEach(function (a) {
+      a.classList.toggle("is-active", a.hash === "#" + id);
     });
 
-    sections.forEach(function (section) { spy.observe(section); });
+    document.title = id === views[0].id ? titleBase : nameOf(id) + " — " + titleBase;
+    if (push && location.hash !== "#" + id) {
+      history.pushState({ view: id }, "", "#" + id);
+    }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
 
-    // At the very bottom a short final section can never win on visible area,
-    // so the last section is the one being read no matter what the ratios say.
-    window.addEventListener("scroll", function () {
-      var atEnd = window.innerHeight + window.scrollY >=
-                  document.documentElement.scrollHeight - 8;
-      if (!atEnd) return;
-      var last = "#" + sections[sections.length - 1].id;
-      navLinks.forEach(function (link) {
-        link.classList.toggle("is-active", link.hash === last);
-      });
-    }, { passive: true });
+  if (views.length && viewLinks.length) {
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest('a[href^="#"]');
+      if (!link || !link.hash) return;
+      var id = link.hash.slice(1);
+      if (!views.some(function (v) { return v.id === id; })) return;
+      event.preventDefault();
+      showView(id, true);
+    });
+
+    window.addEventListener("popstate", function () {
+      showView(location.hash.slice(1) || views[0].id, false);
+    });
+
+    showView(location.hash.slice(1) || views[0].id, false);
   }
 
   /* ------------------------------ 4. Filters ------------------------------ */

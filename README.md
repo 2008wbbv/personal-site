@@ -9,13 +9,13 @@ no trackers, no external network requests at runtime.
 
 ```
 index.html      Home — about, education, experience, publications, projects,
-                honors & awards, certifications, writing, adventures, contact
+                honors & awards, certifications, contact
 cv.html         Curriculum vitae, web version
 cv/cv.tex       Curriculum vitae, LaTeX source — one page
 cv/cv.pdf       Typeset output (pdflatex cv.tex)
 404.html        Not-found page
 styles.css      All styles (design tokens → components → responsive → print)
-main.js         Theme, scrollspy, experience filters, copy-to-clipboard
+main.js         Theme, greedy nav, view switching, filters, copy-to-clipboard
 img/            Photographs — see img/README.md
 ```
 
@@ -23,8 +23,9 @@ The CV exists twice on purpose: `cv.html` for reading in a browser, and a
 one-page LaTeX version for sending to people. Both carry the same content.
 
 Sections follow academic CV convention: education and experience lead, publications
-sit with the research rather than after the skills list, and projects follow. The
-page opens with a one-line standing summary, prose after it, and the photographs last.
+sit with the research rather than after the skills list, and projects follow. Each
+masthead link swaps the body for that section rather than scrolling, so the landing
+view is the standing summary, the bio and the research interests, and nothing else.
 
 ## Design
 
@@ -60,10 +61,9 @@ still complete, readable, and every section is visible.
 | --- | --- |
 | Theme switch | Labeled Light / Dark control, persisted; tracks the OS until you pick one. |
 | Greedy nav | The masthead stays one row: links that do not fit move into an overflow menu and return when the window widens, re-fitting on load and resize. Without JavaScript the bar sits in flow and wraps instead, so every link stays reachable. |
-| Scrollspy | `IntersectionObserver` marks the section you're reading in the masthead, with the last section pinned once you reach the bottom — a short closing section can never win on visible area. |
+| Views | A masthead link shows that section and hides the rest, pushing a history entry so deep links, the back button and the page title all follow. Without JavaScript every section stays in the document and the page reads top to bottom. |
 | Experience filter | all / research / engineering / leadership. Hidden until JS loads. |
 | Sidebar | Sticks when it fits the viewport; below 940px tall it scrolls with the page so nothing is trapped behind a hidden scrollbar. |
-| Photo grids | Track-based, no breakpoints of their own: one column on a phone through four on a wide screen. |
 | Photos | Plain `<img>`, lazy-loaded, with width/height set so nothing reflows. The portrait falls back to a monogram when the file is absent. |
 | Certifications | Linked rows with the issuer's mark: logo, name, issuer, year. The logo is optional — drop the `<img>` and the row still lines up. |
 | Copy email | Clipboard API with an `execCommand` fallback for non-secure contexts. |
@@ -110,12 +110,9 @@ trim a bullet rather than shrinking the margins.
 
 ### Still to fill in
 
-- **Photographs** — everything in `img/` is a generated placeholder carrying the
-  real filename. Overwrite `img/adventures/IMG_2310.jpg` with that photo and it
-  appears; nothing in the markup changes. See `img/README.md`.
-- **Adventure groupings** — the seven groups are in place but which photo sits in
-  which group is a first pass. Each photo is one `<figure>` line; move the line
-  into another `<section class="group">` to regroup.
+- **Photographs** — everything in `img/` is a generated placeholder. Images appear
+  in two places now: the project cards and the certification logos. See
+  `img/README.md`.
 - **Certifications** holds two template rows in `index.html`. Each needs a name, a
   verification URL on the `<a>`, an issuer, a year, and optionally a square logo at
   `img/certs/<name>.png`.

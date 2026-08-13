@@ -8,7 +8,7 @@ no trackers, no external network requests at runtime.
 ## Structure
 
 ```
-index.html      Home — about, education, experience, publications, projects,
+index.html      Home — about, education, experience, publications,
                 honors & awards, certifications, contact
 cv.html         Curriculum vitae, web version
 cv/cv.tex       Curriculum vitae, LaTeX source — one page
@@ -22,8 +22,8 @@ img/            Photographs — see img/README.md
 The CV exists twice on purpose: `cv.html` for reading in a browser, and a
 one-page LaTeX version for sending to people. Both carry the same content.
 
-Sections follow academic CV convention: education and experience lead, publications
-sit with the research rather than after the skills list, and projects follow. Each
+Sections follow academic CV convention: education and experience lead, and publications
+sit with the research rather than after the skills list. Each
 masthead link swaps the body for that section rather than scrolling, so the landing
 view is the standing summary, the bio and the research interests, and nothing else.
 
@@ -108,11 +108,16 @@ Plain LaTeX — `article`, Charter, and a handful of standard packages. No CV cl
 It is written to stay on one page; if you add entries and it spills onto a second,
 trim a bullet rather than shrinking the margins.
 
+### Parked
+
+- **Projects** is commented out in `index.html`, markup intact, along with its
+  masthead item. Uncomment both to bring it back. Its card images are still in
+  `img/projects/`.
+
 ### Still to fill in
 
-- **Photographs** — everything in `img/` is a generated placeholder. Images appear
-  in two places now: the project cards and the certification logos. See
-  `img/README.md`.
+- **Photographs** — everything in `img/` is a generated placeholder: the portrait,
+  the certification logos, and the parked project cards. See `img/README.md`.
 - **Certifications** holds two template rows in `index.html`. Each needs a name, a
   verification URL on the `<a>`, an issuer, a year, and optionally a square logo at
   `img/certs/<name>.png`.

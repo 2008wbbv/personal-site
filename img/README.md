@@ -1,11 +1,13 @@
 # Images
 
-Every file here is a **generated placeholder**. Replace them with real photographs —
-keep the filenames and nothing else needs to change.
+`headshot.jpg` and everything in `adventures/` are real photographs. The files in
+`certs/` and `projects/` are still **generated placeholders** — replace them with
+real images, keep the filenames, and nothing else needs to change.
 
 | File | Used for | Best shape |
 | --- | --- | --- |
-| `headshot.jpg` | Sidebar portrait, both pages | Square. Cropped `50% 20%`, i.e. pulled toward the upper third where a face sits in a full-length shot. Adjust `.avatar__img { object-position }` in `styles.css` if your crop sits differently. |
+| `headshot.jpg` | Sidebar portrait, both pages | Square, already cropped to head and shoulders. The CSS also pulls a non-square file toward the upper third (`50% 20%`); adjust `.avatar__img { object-position }` in `styles.css` if a replacement crop sits differently. |
+| `adventures/*.jpg` | Adventures grid | Square, 1100px |
 | `projects/*.jpg` | Project cards | 16:10 landscape |
 | `certs/*.png` | Certification logos | Square, transparent background |
 

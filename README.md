@@ -9,7 +9,7 @@ no trackers, no external network requests at runtime.
 
 ```
 index.html      Home — about, education, experience, publications,
-                honors & awards, certifications, contact
+                honors & awards, certifications, adventures, contact
 cv.html         Curriculum vitae, web version
 cv/cv.tex       Curriculum vitae, LaTeX source — one page
 cv/cv.pdf       Typeset output (pdflatex cv.tex)
@@ -116,8 +116,9 @@ trim a bullet rather than shrinking the margins.
 
 ### Still to fill in
 
-- **Photographs** — everything in `img/` is a generated placeholder: the portrait,
-  the certification logos, and the parked project cards. See `img/README.md`.
+- **Photographs** — the portrait and the Adventures grid are real; the certification
+  logos and the parked project cards are still generated placeholders. See
+  `img/README.md`.
 - **Certifications** holds two template rows in `index.html`. Each needs a name, a
   verification URL on the `<a>`, an issuer, a year, and optionally a square logo at
   `img/certs/<name>.png`.

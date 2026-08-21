@@ -1,8 +1,10 @@
-node_modules/
-.DS_Store
-*.log
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
 
-# LaTeX build artifacts
-cv/*.aux
-cv/*.log
-cv/*.out
+# GitHub Pages resolves gems server-side; a committed lockfile only conflicts
+Gemfile.lock
+
+.DS_Store

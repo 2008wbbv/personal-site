@@ -1,0 +1,8 @@
+# The order of the links in the header of the website.
+#
+# Removing a link prevents it from showing in the header, but does not prevent
+# the page from being included in the site.
+
+main:
+  - title: "Publications"
+    url: /publications/

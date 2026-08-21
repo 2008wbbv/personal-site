@@ -16,7 +16,8 @@ _data/navigation.yml   The header links
 _pages/about.md        The front page: bio, education, experience, honors,
                        service, certifications
 _publications/         One file per paper
-images/profile.png     Sidebar portrait
+images/profile.jpg     Sidebar portrait
+images/photos/         18 photographs, currently unused — see images/README.md
 ```
 
 There is no CV page. Its content — education, experience, honors, certifications —
@@ -68,6 +69,7 @@ source. If the site is ever served from a project path rather than `bnvac.com`, 
 
 ## Still to fill in
 
-- **Portrait** — `images/profile.png` is a placeholder.
 - **Certifications** — the section on the front page holds a note in place of the list.
 - **Publications** — one "in preparation" entry stands in until the first paper lands.
+- **The photographs** in `images/photos/` have no page. The template ships a portfolio
+  collection and layout if they should be shown again.

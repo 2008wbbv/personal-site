@@ -23,7 +23,7 @@ repository               : "2008wbbv/personal-site"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Ben Vaccaro"
   pronouns         : # example: "she/her"  
   bio              : "Radar sensing, machine learning systems, and neural interfaces."

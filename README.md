@@ -1,87 +1,64 @@
 # bnvac.com
 
-Personal academic site for Ben Vaccaro, built on
-[academicpages](https://github.com/academicpages/academicpages.github.io) — a Jekyll
-template forked from [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/).
+Personal site for Ben Vaccaro. Plain HTML, CSS and JavaScript — no build step, no
+framework, nothing to install. Upload the files and it works.
 
-The template is used **unmodified**. `_sass/`, `assets/`, `_layouts/` and `_includes/`
-are byte-identical to upstream; nothing here overrides its styles. All the site-specific
-content lives in configuration and Markdown.
+The look comes from
+[academicpages](https://github.com/academicpages/academicpages.github.io) (itself a fork
+of [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/)), whose stylesheet
+is used as-is. These files were generated from that template and then flattened; the
+Jekyll source is in this repository's history at commit `ddf8813` if it is ever wanted
+back.
+
+## Deploying to Neocities
+
+Upload the contents of this repository — not the folder itself, its contents — so
+`index.html` sits at the site root. Skip `.git` and `README.md`.
+
+Links are root-relative (`/education/`, `/assets/css/main.css`), so the site works at
+`username.neocities.org` and at a custom domain without changing anything. That does
+mean opening `index.html` by double-clicking it will not find the stylesheet — serve the
+folder instead:
+
+```sh
+python3 -m http.server 8000
+```
+
+and visit <http://localhost:8000>.
+
+Nothing is loaded from a CDN. Fonts, icons, stylesheet and script are all in `assets/`,
+so the site cannot be broken by someone else's server going down.
 
 ## What is where
 
 ```
-_config.yml            Site title, URL, and the author block that fills the sidebar
-_data/navigation.yml   The header links
-_pages/about.md        The front page — the bio
-_pages/education.md    Education
-_pages/experience.md   Experience
-_pages/awards.md       Honors & awards
-_pages/certifications.md
-_pages/contact.md      Email, the Substack, and the social links
-_publications/         One file per paper
-images/profile.jpg     Sidebar portrait
-images/photos/         18 photographs, currently unused — see images/README.md
+index.html              About — the front page
+education/index.html    Education
+experience/index.html   Experience
+publications/index.html Publications
+awards/index.html       Honors & awards
+certifications/index.html
+contact/index.html      Email, the Substack, social links
+404.html                Not-found page
+assets/                 Stylesheet, script, Font Awesome and its webfonts
+images/profile.jpg      Sidebar portrait
+images/photos/          18 photographs, not currently shown on any page
 ```
 
-There is no CV page. Its content is split across the tabs in the header instead —
-Education, Experience, Publications, Honors & Awards, Certifications, Contact — one
-page each, in the order `_data/navigation.yml` lists them. The site title on the left
-returns to the front page.
+## Editing
 
-Page headings follow the template's Markdown convention: the `title` in the front
-matter becomes the page's only `h1`, and entries inside a page use `------` beneath
-them, which Markdown renders as `h2`. Using `======` there instead would make every
-entry compete with the page title.
+Each page is a complete HTML file. The part worth editing sits between
+`<div class="archive">` and its closing tag — everything above and below it is the
+header, sidebar and footer, which are the same on every page.
 
-## Dark mode
+That repetition is the cost of having no build step: **changing the sidebar or the header
+means changing it in all seven pages.** A find-and-replace across `*.html` does it.
 
-Built into the template: the sun icon at the right of the header. It follows the
-operating system until you choose, then remembers the choice in `localStorage`.
-Nothing was added for it.
-
-## Adding content
-
-**A publication** — a new file in `_publications/`, front matter as in the existing one.
-`markdown_generator/` can bulk-generate these from a spreadsheet if that is ever easier.
-
-**A page** — a new file in `_pages/` with a `permalink`, then a link in
-`_data/navigation.yml`. The template also ships archive layouts for talks, teaching,
-a portfolio and a blog; those collections exist but are empty, so add files to
-`_talks/`, `_teaching/`, `_portfolio/` or `_posts/` and give each a page and a nav entry.
-
-**The sidebar** — the `author:` block in `_config.yml`. Filling in a service (ORCID,
-Google Scholar, Bluesky, and so on) makes its icon appear; leaving it blank hides it.
-
-## Running locally
-
-```sh
-bundle install
-bundle exec jekyll serve
-```
-
-Then visit <http://localhost:4000>.
-
-`url` in `_config.yml` is `https://bnvac.com`, so a plain local build points its assets
-at the production domain. To preview locally, override it:
-
-```sh
-bundle exec jekyll serve --config _config.yml,_config_local.yml
-```
-
-with `_config_local.yml` containing `url: "http://localhost:4000"`.
-
-## Deploying
-
-GitHub Pages builds Jekyll automatically — push and enable Pages on the branch. There is
-deliberately no `.nojekyll` file; that would switch the build off and serve the raw
-source. If the site is ever served from a project path rather than `bnvac.com`, set
-`baseurl` in `_config.yml` to match.
+To add a tab, copy an existing page directory, edit its content and `<title>`, then add a
+matching `<li class="masthead__menu-item">` to the header of every page.
 
 ## Still to fill in
 
-- **Certifications** — `_pages/certifications.md` holds a note and a commented-out
-  example row in place of the list.
-- **Publications** — one "in preparation" entry stands in until the first paper lands.
-- **The photographs** in `images/photos/` have no page. The template ships a portfolio
-  collection and layout if they should be shown again.
+- **Certifications** — `certifications/index.html` holds a note where the list goes.
+- **Publications** — one "in preparation" entry until the first paper lands.
+- **The photographs** in `images/photos/` are not linked from any page.

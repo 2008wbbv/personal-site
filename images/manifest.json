@@ -1,13 +1,9 @@
----
-layout: none
-permalink: /images/manifest.json
----
 {
-	"name": {{ site.title | jsonify }},
-	"short_name": {{ site.name | jsonify }},
-	"description": {{ site.description | jsonify }},
-	"start_url": "{{ site.baseurl | default: '/' }}",
-	"lang": {{ site.locale | default: "en" | jsonify }},
+	"name": "Ben Vaccaro",
+	"short_name": "Ben Vaccaro",
+	"description": "Radar sensing, machine learning systems, and neural interfaces.",
+	"start_url": "/",
+	"lang": "en-US",
 	"icons": [
 		{
 			"src": "/images/favicon-192x192.png",

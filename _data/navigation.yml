@@ -4,5 +4,20 @@
 # the page from being included in the site.
 
 main:
+  - title: "Education"
+    url: /education/
+
+  - title: "Experience"
+    url: /experience/
+
   - title: "Publications"
     url: /publications/
+
+  - title: "Honors & Awards"
+    url: /awards/
+
+  - title: "Certifications"
+    url: /certifications/
+
+  - title: "Contact"
+    url: /contact/

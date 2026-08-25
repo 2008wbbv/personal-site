@@ -13,15 +13,26 @@ content lives in configuration and Markdown.
 ```
 _config.yml            Site title, URL, and the author block that fills the sidebar
 _data/navigation.yml   The header links
-_pages/about.md        The front page: bio, education, experience, honors,
-                       service, certifications
+_pages/about.md        The front page — the bio
+_pages/education.md    Education
+_pages/experience.md   Experience
+_pages/awards.md       Honors & awards
+_pages/certifications.md
+_pages/contact.md      Email, the Substack, and the social links
 _publications/         One file per paper
 images/profile.jpg     Sidebar portrait
 images/photos/         18 photographs, currently unused — see images/README.md
 ```
 
-There is no CV page. Its content — education, experience, honors, certifications —
-sits on the front page instead, under headings, which is where a reader lands first.
+There is no CV page. Its content is split across the tabs in the header instead —
+Education, Experience, Publications, Honors & Awards, Certifications, Contact — one
+page each, in the order `_data/navigation.yml` lists them. The site title on the left
+returns to the front page.
+
+Page headings follow the template's Markdown convention: the `title` in the front
+matter becomes the page's only `h1`, and entries inside a page use `------` beneath
+them, which Markdown renders as `h2`. Using `======` there instead would make every
+entry compete with the page title.
 
 ## Dark mode
 
@@ -69,7 +80,8 @@ source. If the site is ever served from a project path rather than `bnvac.com`, 
 
 ## Still to fill in
 
-- **Certifications** — the section on the front page holds a note in place of the list.
+- **Certifications** — `_pages/certifications.md` holds a note and a commented-out
+  example row in place of the list.
 - **Publications** — one "in preparation" entry stands in until the first paper lands.
 - **The photographs** in `images/photos/` have no page. The template ships a portfolio
   collection and layout if they should be shown again.

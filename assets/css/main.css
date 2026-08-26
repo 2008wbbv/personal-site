@@ -15,3 +15,22 @@
 .archive ul{margin-top:.2em;margin-bottom:1.1em}
 .role-meta{margin:0 0 .55em;font-size:.8em;line-height:1.5;color:var(--global-text-color)}
 .role-meta em{color:var(--global-text-color-light);font-style:normal}
+
+/* Dark mode, actually dark. The stock theme sits at #474747, a mid grey, with
+   light-grey rules and near-white secondary text that all read as glare once
+   the page goes black. */
+html[data-theme="dark"]{
+  --global-bg-color:#000;
+  --global-footer-bg-color:#0b0b0b;
+  --global-border-color:#262626;
+  --global-dark-border-color:#3a3a3a;
+  --global-code-background-color:#111;
+  --global-code-text-color:#e6e6e6;
+  --global-fig-caption-color:#9a9a9a;
+  --global-text-color:#f2f2f2;
+  --global-text-color-light:#8f8f8f;
+  --global-thead-color:#1a1a1a;
+}
+/* The stock selection is white-on-black, which disappears against a black page. */
+html[data-theme="dark"] ::selection{background:#f2f2f2;color:#000}
+html[data-theme="dark"] ::-moz-selection{background:#f2f2f2;color:#000}

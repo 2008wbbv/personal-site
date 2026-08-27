@@ -49,3 +49,9 @@ html[data-theme="dark"] ::-moz-selection{background:#f2f2f2;color:#000}
   .role{grid-template-columns:34px minmax(0,1fr);gap:0 12px}
   .role__logo{width:34px;height:34px}
 }
+
+/* Certificate previews: a thumbnail that opens the full scan. */
+.cert-preview{margin:.6em 0 0}
+.cert-preview img{max-width:340px;width:100%;height:auto;border:1px solid var(--global-border-color);
+  border-radius:4px;background:#fff;display:block}
+.cert-preview a:hover img{border-color:var(--global-dark-border-color)}

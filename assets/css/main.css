@@ -34,3 +34,18 @@ html[data-theme="dark"]{
 /* The stock selection is white-on-black, which disappears against a black page. */
 html[data-theme="dark"] ::selection{background:#f2f2f2;color:#000}
 html[data-theme="dark"] ::-moz-selection{background:#f2f2f2;color:#000}
+
+/* Role and education entries: a small organisation mark beside the text.
+   Where no logo exists the slot holds a neutral glyph, so the column still
+   lines up instead of the text jumping left. The tile stays light in dark mode
+   because most logos are drawn for a light background. */
+.role{display:grid;grid-template-columns:44px minmax(0,1fr);gap:0 16px;align-items:start;margin-top:1.6em}
+.role:first-of-type{margin-top:.6em}
+.role__body>h2{margin-top:0}
+.role__logo{width:44px;height:44px;object-fit:contain;padding:3px;border-radius:6px;
+  background:#fff;border:1px solid var(--global-border-color);box-sizing:border-box}
+.role__logo--none{display:grid;place-items:center;font-size:18px;color:#9aa0a6}
+@media (max-width:600px){
+  .role{grid-template-columns:34px minmax(0,1fr);gap:0 12px}
+  .role__logo{width:34px;height:34px}
+}

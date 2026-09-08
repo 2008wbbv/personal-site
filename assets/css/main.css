@@ -55,3 +55,22 @@ html[data-theme="dark"] ::-moz-selection{background:#f2f2f2;color:#000}
 .cert-preview img{max-width:340px;width:100%;height:auto;border:1px solid var(--global-border-color);
   border-radius:4px;background:#fff;display:block}
 .cert-preview a:hover img{border-color:var(--global-dark-border-color)}
+
+/* Software entries. Same grid as the roles, but the mark slot holds a language
+   glyph and each project can carry a screenshot that opens full size. */
+.proj-links{margin:.35em 0 0;font-size:.8em}
+.proj-links a+a::before{content:"\00b7";margin:0 .5em;color:var(--global-text-color-light)}
+.proj-shot{margin:.7em 0 0}
+.proj-shot img{max-width:100%;width:100%;height:auto;display:block;border-radius:4px;
+  border:1px solid var(--global-border-color);background:#fff}
+.proj-shot a:hover img{border-color:var(--global-dark-border-color)}
+/* Cap at the thumbnail's own 700px so it is never upscaled, and keep it inside
+   the text column rather than running the full measure. */
+@media (min-width:37.5em){.proj-shot img{max-width:700px}}
+
+/* The trailing list of smaller repositories: name, language, one line. */
+.repo-list{margin:.4em 0 0;padding:0;list-style:none}
+.repo-list li{padding:.55em 0;border-top:1px solid var(--global-border-color);font-size:.85em;line-height:1.5}
+.repo-list li:last-child{border-bottom:1px solid var(--global-border-color)}
+.repo-list__lang{color:var(--global-text-color-light);font-size:.9em;white-space:nowrap}
+.repo-list__lang::before{content:"\00b7";margin:0 .45em}

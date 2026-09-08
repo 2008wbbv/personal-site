@@ -313,7 +313,40 @@
     <p class="role-meta"><strong>Go</strong></p>
     <p>A self-hosted inventory for the parts in a lab drawer &mdash; boards, sensors, modules, passives &mdash; with photos, counts, locations, printable QR labels, and project bills of materials that tell you what you are missing. It ships as one static binary with templates and assets compiled in, one SQLite file and a folder of photos: no database server, no Node build, no config file, and it cross-compiles to a Raspberry Pi with no runtime dependencies at all. Upgrading is replacing the binary; the schema migrates itself on startup.</p>
     <p class="proj-links"><a href="https://github.com/2008wbbv/backoffice">Repository</a></p>
-    <p class="proj-shot"><a href="/images/software/backoffice.jpg"><img src="/images/software/backoffice-thumb.jpg" alt="backoffice in use" width="700" height="438" loading="lazy"></a></p>
+    <div class="shots" aria-label="backoffice" role="group">
+      <ul class="shots__track">
+        <li class="shots__slide">
+          <figure>
+            <a href="/images/software/backoffice-1.jpg"><img src="/images/software/backoffice-1.jpg" alt="backoffice, screen 1 of 5" width="1400" height="1030" loading="lazy" decoding="async"></a>
+            <figcaption>The inventory, filtered by type, drawer, maker and the interfaces a part speaks.</figcaption>
+          </figure>
+        </li>
+        <li class="shots__slide">
+          <figure>
+            <a href="/images/software/backoffice-2.jpg"><img src="/images/software/backoffice-2.jpg" alt="backoffice, screen 2 of 5" width="1400" height="1030" loading="lazy" decoding="async"></a>
+            <figcaption>One part: stock, where it lives, prices across the shops it can reach, and the pinout.</figcaption>
+          </figure>
+        </li>
+        <li class="shots__slide">
+          <figure>
+            <a href="/images/software/backoffice-3.jpg"><img src="/images/software/backoffice-3.jpg" alt="backoffice, screen 3 of 5" width="1400" height="1030" loading="lazy" decoding="async"></a>
+            <figcaption>A project reserves its parts, then budgets the pins on the board and draws the wiring.</figcaption>
+          </figure>
+        </li>
+        <li class="shots__slide">
+          <figure>
+            <a href="/images/software/backoffice-4.jpg"><img src="/images/software/backoffice-4.jpg" alt="backoffice, screen 4 of 5" width="1400" height="1030" loading="lazy" decoding="async"></a>
+            <figcaption>The idea board proposes builds it can name every part for, from what is already on the shelf.</figcaption>
+          </figure>
+        </li>
+        <li class="shots__slide">
+          <figure>
+            <a href="/images/software/backoffice-5.jpg"><img src="/images/software/backoffice-5.jpg" alt="backoffice, screen 5 of 5" width="1400" height="1030" loading="lazy" decoding="async"></a>
+            <figcaption>Case finder: printable models for a given board, ranked by how often they have actually been printed.</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -366,6 +399,7 @@
     </div>
 
     <script type="module" src="/assets/js/main.min.js"></script>
+    <script src="/assets/js/carousel.js"></script>
 
 
 
